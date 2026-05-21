@@ -1,0 +1,50 @@
+{
+  "Navbar": {
+    "search": "Buscar una calculadora...",
+    "searchButton": "Buscar",
+    "biology": "Biología",
+    "chemistry": "Química",
+    "physics": "Física",
+    "math": "Matemáticas"
+  },
+  "Footer": {
+    "tagline": "Empoderando a individuos y empresas con calculadoras impulsadas por IA de próxima generación.",
+    "language": "Idioma"
+  },
+  "Home": {
+    "heroTitle": "2,342 calculadoras y sumando.",
+    "heroSubtitle": "CalcGPT ofrece soluciones para una amplia gama de problemas, desde finanzas hasta salud.",
+    "lastUsed": "Últimas calculadoras usadas",
+    "browseCategory": "Explorar por categoría",
+    "viewAll": "Ver todo"
+  },
+  "Categories": {
+    "biology": "Biología",
+    "chemistry": "Química",
+    "construction": "Construcción",
+    "conversion": "Conversión",
+    "ecology": "Ecología",
+    "everyday-life": "La vida cotidiana",
+    "finance": "Finanzas",
+    "food": "Alimento",
+    "health": "Salud",
+    "math": "Matemáticas",
+    "physics": "Física",
+    "sports": "Deportes",
+    "statistics": "Estadística",
+    "other": "Other",
+    "discover": "Descubra CalcGPT"
+  },
+  "FooterLinks": {
+    "calculatorCategories": "Categorías de calculadora",
+    "press": "Prensa",
+    "editorialPolicies": "Políticas editoriales",
+    "partnerships": "Asociaciones",
+    "meetCalcGPT": "Conozca CalcGPT",
+    "about": "Acerca de",
+    "resourceLibrary": "Biblioteca de recursos",
+    "collections": "Colecciones",
+    "privacyPolicy": "política de privacidad",
+    "termsOfService": "Términos de servicio"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "Navbar": {
+    "search": "Taschenrechner suchen...",
+    "searchButton": "Suchen",
+    "biology": "Biologie",
+    "chemistry": "Chemie",
+    "physics": "Physik",
+    "math": "Mathematik"
+  },
+  "Footer": {
+    "tagline": "Unterstützung von Einzelpersonen und Unternehmen mit KI-gestützten Taschenrechnern.",
+    "language": "Sprache"
+  },
+  "Home": {
+    "heroTitle": "2.342 Rechner und mehr.",
+    "heroSubtitle": "CalcGPT bietet Lösungen für eine Vielzahl von Problemen, von Finanzen bis hin zu Gesundheit.",
+    "lastUsed": "Zuletzt verwendete Rechner",
+    "browseCategory": "Nach Kategorie durchsuchen",
+    "viewAll": "Alle ansehen"
+  },
+  "Categories": {
+    "biology": "Biologie",
+    "chemistry": "Chemie",
+    "construction": "Konstruktion",
+    "conversion": "Konvertierung",
+    "ecology": "Ökologie",
+    "everyday-life": "Alltag",
+    "finance": "Finanzen",
+    "food": "Essen",
+    "health": "Gesundheit",
+    "math": "Mathe",
+    "physics": "Physik",
+    "sports": "Sport",
+    "statistics": "Statistiken",
+    "other": "Andere",
+    "discover": "Entdecken Sie CalcGPT"
+  },
+  "FooterLinks": {
+    "calculatorCategories": "Rechnerkategorien",
+    "press": "Drücken",
+    "editorialPolicies": "Redaktionelle Richtlinien",
+    "partnerships": "Partnerschaften",
+    "meetCalcGPT": "Lernen Sie CalcGPT kennen",
+    "about": "Um",
+    "resourceLibrary": "Ressourcenbibliothek",
+    "collections": "Sammlungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfService": "Nutzungsbedingungen"
+  }
+}

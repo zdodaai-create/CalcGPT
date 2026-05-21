@@ -1,0 +1,50 @@
+{
+  "Navbar": {
+    "search": "Znajdź kalkulator...",
+    "searchButton": "Szukaj",
+    "biology": "Biologia",
+    "chemistry": "Chemia",
+    "physics": "Fizyka",
+    "math": "Matematyka"
+  },
+  "Footer": {
+    "tagline": "Wspieranie jednostek i przedsiębiorstw za pomocą kalkulatorów opartych na sztucznej inteligencji.",
+    "language": "Język"
+  },
+  "Home": {
+    "heroTitle": "2 342 kalkulatory i wciąż rośnie.",
+    "heroSubtitle": "CalcGPT zapewnia rozwiązania dla szerokiej gamy problemów.",
+    "lastUsed": "Ostatnio używane kalkulatory",
+    "browseCategory": "Przeglądaj według kategorii",
+    "viewAll": "Pokaż wszystko"
+  },
+  "Categories": {
+    "biology": "Biologia",
+    "chemistry": "Chemia",
+    "construction": "Budowa",
+    "conversion": "Konwersja",
+    "ecology": "Ekologia",
+    "everyday-life": "Życie codzienne",
+    "finance": "Finanse",
+    "food": "Żywność",
+    "health": "Zdrowie",
+    "math": "Matematyka",
+    "physics": "Fizyka",
+    "sports": "Lekkoatletyka",
+    "statistics": "Statystyka",
+    "other": "Inny",
+    "discover": "Odkryj CalcGPT"
+  },
+  "FooterLinks": {
+    "calculatorCategories": "Kategorie kalkulatorów",
+    "press": "Naciskać",
+    "editorialPolicies": "Zasady redakcyjne",
+    "partnerships": "Partnerstwa",
+    "meetCalcGPT": "Poznaj CalcGPT",
+    "about": "O",
+    "resourceLibrary": "Biblioteka zasobów",
+    "collections": "Kolekcje",
+    "privacyPolicy": "Polityka prywatności",
+    "termsOfService": "Warunki świadczenia usług"
+  }
+}

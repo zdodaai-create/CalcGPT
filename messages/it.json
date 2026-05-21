@@ -1,0 +1,50 @@
+{
+  "Navbar": {
+    "search": "Trova una calcolatrice...",
+    "searchButton": "Cerca",
+    "biology": "Biologia",
+    "chemistry": "Chimica",
+    "physics": "Fisica",
+    "math": "Matematica"
+  },
+  "Footer": {
+    "tagline": "Potenziare individui e aziende con calcolatrici basate sull'IA.",
+    "language": "Lingua"
+  },
+  "Home": {
+    "heroTitle": "2.342 calcolatrici e oltre.",
+    "heroSubtitle": "CalcGPT fornisce soluzioni per una vasta gamma di problemi.",
+    "lastUsed": "Ultime calcolatrici utilizzate",
+    "browseCategory": "Sfoglia per categoria",
+    "viewAll": "Vedi tutti"
+  },
+  "Categories": {
+    "biology": "Biologia",
+    "chemistry": "Chimica",
+    "construction": "Costruzione",
+    "conversion": "Conversione",
+    "ecology": "Ecologia",
+    "everyday-life": "Vita quotidiana",
+    "finance": "Finanza",
+    "food": "Cibo",
+    "health": "Salute",
+    "math": "Matematica",
+    "physics": "Fisica",
+    "sports": "Sport",
+    "statistics": "Statistiche",
+    "other": "Other",
+    "discover": "Scopri CalcGPT"
+  },
+  "FooterLinks": {
+    "calculatorCategories": "Categorie del calcolatore",
+    "press": "Premere",
+    "editorialPolicies": "Politiche editoriali",
+    "partnerships": "Partenariati",
+    "meetCalcGPT": "Scopri CalcGPT",
+    "about": "Di",
+    "resourceLibrary": "Biblioteca di risorse",
+    "collections": "Collezioni",
+    "privacyPolicy": "politica sulla riservatezza",
+    "termsOfService": "Termini di servizio"
+  }
+}

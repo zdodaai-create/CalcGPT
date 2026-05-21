@@ -1,0 +1,193 @@
+import { 
+  Atom, 
+  FlaskConical, 
+  Beaker, 
+  Zap, 
+  Thermometer, 
+  Dna as Bio,
+  Activity,
+  Pipette,
+  Globe,
+  Flame,
+  Binary
+} from 'lucide-react';
+
+export const CHEMISTRY_DATA = [
+  {
+    id: "general-chemistry",
+    title: "General Chemistry",
+    icon: Atom,
+    calculators: [
+      { name: "Atom Calculator", slug: "atom-calculator" },
+      { name: "Atomic Mass Calculator", slug: "atomic-mass-calculator" },
+      { name: "Average Atomic Mass Calculator", slug: "average-atomic-mass-calculator" },
+      { name: "Bond Order Calculator", slug: "bond-order-calculator" },
+      { name: "Chemical Name Calculator", slug: "chemical-name-calculator" },
+      { name: "Effective Nuclear Charge Calculator", slug: "effective-nuclear-charge-calculator" },
+      { name: "Electron Configuration Calculator", slug: "electron-configuration-calculator" },
+      { name: "Electronegativity Calculator", slug: "electronegativity-calculator" },
+      { name: "Molar Mass Calculator", slug: "molar-mass-calculator" },
+      { name: "Percent Composition Calculator", slug: "percent-composition-calculator" },
+      { name: "Percent Ionic Character Calculator", slug: "percent-ionic-character-calculator" },
+      { name: "pKa Calculator", slug: "pka-calculator" },
+      { name: "Quiz: Electron Configuration Calculator", slug: "quiz-electron-configuration-calculator" },
+    ]
+  },
+  {
+    id: "stoichiometry",
+    title: "Stoichiometry",
+    icon: Pipette,
+    calculators: [
+      { name: "AFR Calculator (Air-Fuel Ratio)", slug: "afr-calculator" },
+      { name: "Atom Economy Calculator", slug: "atom-economy-calculator" },
+      { name: "Avogadro's Number Calculator", slug: "avogadros-number-calculator" },
+      { name: "Empirical Formula Calculator", slug: "empirical-formula-calculator" },
+      { name: "Grams to Moles Calculator", slug: "grams-to-moles-calculator" },
+      { name: "Hydrogen Ion Concentration Calculator", slug: "hydrogen-ion-concentration-calculator" },
+      { name: "Molality Calculator", slug: "molality-calculator" },
+      { name: "Molarity Calculator", slug: "molarity-calculator" },
+      { name: "Molar Mass of Gas Calculator", slug: "molar-mass-of-gas-calculator" },
+      { name: "Mole Calculator", slug: "mole-calculator" },
+      { name: "Molecular Weight Calculator", slug: "molecular-weight-calculator" },
+      { name: "Mole Fraction Calculator", slug: "mole-fraction-calculator" },
+      { name: "Moles to Atoms Converter", slug: "moles-to-atoms-converter" },
+      { name: "Normality Calculator", slug: "normality-calculator" },
+      { name: "PPM to Molarity Calculator", slug: "ppm-to-molarity-calculator" },
+    ]
+  },
+  {
+    id: "mixtures-solutions",
+    title: "Mixtures & Solutions",
+    icon: Beaker,
+    calculators: [
+      { name: "Activity Coefficient Calculator", slug: "activity-coefficient-calculator" },
+      { name: "Alligation Calculator", slug: "alligation-calculator" },
+      { name: "Bleach Dilution Calculator", slug: "bleach-dilution-calculator" },
+      { name: "Buffer Capacity Calculator", slug: "buffer-capacity-calculator" },
+      { name: "Buffer pH Calculator", slug: "buffer-ph-calculator" },
+      { name: "Concentration Calculator", slug: "concentration-calculator" },
+      { name: "Dilution Factor Calculator", slug: "dilution-factor-calculator" },
+      { name: "Henderson-Hasselbalch Calculator", slug: "henderson-hasselbalch-calculator" },
+      { name: "Mass Percent Calculator", slug: "mass-percent-calculator" },
+      { name: "Mixing Ratio Calculator", slug: "mixing-ratio-calculator" },
+      { name: "Neutralization Calculator", slug: "neutralization-calculator" },
+      { name: "Percentage Concentration to Molarity Calculator", slug: "percentage-concentration-to-molarity-calculator" },
+      { name: "Percent Solution Calculator", slug: "percent-solution-calculator" },
+      { name: "pH Calculator", slug: "ph-calculator" },
+      { name: "Raoult's Law Calculator", slug: "raoults-law-calculator" },
+      { name: "Reconstitution Calculator", slug: "reconstitution-calculator" },
+      { name: "Saponification Value Calculator", slug: "saponification-value-calculator" },
+      { name: "Serial Dilution Calculator", slug: "serial-dilution-calculator" },
+      { name: "Solution Dilution Calculator", slug: "solution-dilution-calculator" },
+      { name: "TDS Calculator", slug: "tds-calculator" },
+      { name: "Titration Calculator", slug: "titration-calculator" },
+      { name: "Water Hardness Calculator", slug: "water-hardness-calculator" },
+    ]
+  },
+  {
+    id: "chemical-reactions",
+    title: "Chemical Reactions",
+    icon: FlaskConical,
+    calculators: [
+      { name: "Activation Energy Calculator", slug: "activation-energy-calculator" },
+      { name: "Actual Yield Calculator", slug: "actual-yield-calculator" },
+      { name: "Arrhenius Equation Calculator", slug: "arrhenius-equation-calculator" },
+      { name: "Chemical Equation Balancer", slug: "chemical-equation-balancer" },
+      { name: "Equilibrium Constant Calculator", slug: "equilibrium-constant-calculator" },
+      { name: "Kp Calculator", slug: "kp-calculator" },
+      { name: "Molar Ratio Calculator", slug: "molar-ratio-calculator" },
+      { name: "Net Ionic Equation Calculator", slug: "net-ionic-equation-calculator" },
+      { name: "Percent Yield Calculator", slug: "percent-yield-calculator" },
+      { name: "Rate Constant Calculator", slug: "rate-constant-calculator" },
+      { name: "Reaction Quotient Calculator", slug: "reaction-quotient-calculator" },
+      { name: "Theoretical Yield Calculator", slug: "theoretical-yield-calculator" },
+    ]
+  },
+  {
+    id: "thermodynamics",
+    title: "Thermodynamics",
+    icon: Thermometer,
+    calculators: [
+      { name: "Boiling Point Calculator", slug: "boiling-point-calculator" },
+      { name: "Boiling Point at Altitude Calculator", slug: "boiling-point-at-altitude-calculator" },
+      { name: "Boiling Point Elevation Calculator", slug: "boiling-point-elevation-calculator" },
+      { name: "Entropy Calculator", slug: "entropy-calculator" },
+      { name: "Freezing Point Depression Calculator", slug: "freezing-point-depression-calculator" },
+      { name: "Gibbs Free Energy Calculator", slug: "gibbs-free-energy-calculator" },
+      { name: "Gibbs' Phase Rule Calculator", slug: "gibbs-phase-rule-calculator" },
+      { name: "Heat of Combustion Calculator", slug: "heat-of-combustion-calculator" },
+      { name: "Q10 Calculator", slug: "q10-calculator" },
+      { name: "STP Calculator (Standard Temperature & Pressure)", slug: "stp-calculator" },
+      { name: "Vapor Pressure Calculator", slug: "vapor-pressure-calculator" },
+      { name: "Vapor Pressure of Water Calculator", slug: "vapor-pressure-of-water-calculator" },
+    ]
+  },
+  {
+    id: "electrochemistry",
+    title: "Electrochemistry",
+    icon: Zap,
+    calculators: [
+      { name: "Cell EMF Calculator", slug: "cell-emf-calculator" },
+      { name: "Electrolysis Calculator", slug: "electrolysis-calculator" },
+      { name: "Ionic Strength Calculator", slug: "ionic-strength-calculator" },
+      { name: "Lattice Energy Calculator", slug: "lattice-energy-calculator" },
+      { name: "Nernst Equation Calculator", slug: "nernst-equation-calculator" },
+    ]
+  },
+  {
+    id: "physical-chemistry",
+    title: "Physical Chemistry",
+    icon: Activity,
+    calculators: [
+      { name: "Diffusion Coefficient Calculator", slug: "diffusion-coefficient-calculator" },
+      { name: "Rate of Effusion Calculator", slug: "rate-of-effusion-calculator" },
+      { name: "Half-Life Calculator", slug: "half-life-calculator" },
+      { name: "Langmuir Isotherm Calculator", slug: "langmuir-isotherm-calculator" },
+      { name: "Osmotic Pressure Calculator", slug: "osmotic-pressure-calculator" },
+      { name: "Partial Pressure Calculator", slug: "partial-pressure-calculator" },
+      { name: "Radioactive Decay Calculator", slug: "radioactive-decay-calculator" },
+      { name: "Two-Photon Absorption Calculator", slug: "two-photon-absorption-calculator" },
+      { name: "Young-Laplace Equation Calculator", slug: "young-laplace-equation-calculator" },
+    ]
+  },
+  {
+    id: "organic-chemistry",
+    title: "Organic Chemistry",
+    icon: Flame,
+    calculators: [
+      { name: "Chemical Oxygen Demand Calculator", slug: "chemical-oxygen-demand-calculator" },
+      { name: "Combustion Analysis Calculator", slug: "combustion-analysis-calculator" },
+      { name: "Combustion Reaction Calculator", slug: "combustion-reaction-calculator" },
+      { name: "Crude Protein Calculator", slug: "crude-protein-calculator" },
+      { name: "Degree of Unsaturation Calculator", slug: "degree-of-unsaturation-calculator" },
+      { name: "Double Bond Equivalent Calculator", slug: "double-bond-equivalent-calculator" },
+      { name: "Liquid Ethylene Density Calculator", slug: "liquid-ethylene-density-calculator" },
+      { name: "Radiocarbon Dating Calculator (Carbon 14)", slug: "radiocarbon-dating-calculator" },
+    ]
+  },
+  {
+    id: "biochemistry",
+    title: "Biochemistry",
+    icon: Bio,
+    calculators: [
+      { name: "Calibration Curve Calculator", slug: "calibration-curve-calculator" },
+      { name: "Enzyme Activity Calculator", slug: "enzyme-activity-calculator" },
+      { name: "Isoelectric Point Calculator", slug: "isoelectric-point-calculator" },
+      { name: "Michaelis-Menten Equation Calculator", slug: "michaelis-menten-equation-calculator" },
+      { name: "Protein Solubility Calculator", slug: "protein-solubility-calculator" },
+      { name: "Resuspension Calculator", slug: "resuspension-calculator" },
+    ]
+  },
+  {
+    id: "other",
+    title: "Other Chemistry",
+    icon: Globe,
+    calculators: [
+      { name: "Beer-Lambert Law Calculator", slug: "beer-lambert-law-calculator" },
+      { name: "Cubic Cell Calculator", slug: "cubic-cell-calculator" },
+      { name: "Detention Time Calculator", slug: "detention-time-calculator" },
+      { name: "Hydraulic Retention Time Calculator", slug: "hydraulic-retention-time-calculator" },
+      { name: "Miller Indices Calculator", slug: "miller-indices-calculator" },
+    ]
+  }
+];

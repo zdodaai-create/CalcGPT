@@ -1,0 +1,50 @@
+{
+  "Navbar": {
+    "search": "Hitta en kalkylator...",
+    "searchButton": "Sök",
+    "biology": "Biologi",
+    "chemistry": "Kemi",
+    "physics": "Fysik",
+    "math": "Matematik"
+  },
+  "Footer": {
+    "tagline": "Stärker individer och företag med AI-drivna kalkylatorer.",
+    "language": "Språk"
+  },
+  "Home": {
+    "heroTitle": "2 342 kalkylatorer och fler kommer.",
+    "heroSubtitle": "CalcGPT erbjuder lösningar på ett brett spektrum av problem.",
+    "lastUsed": "Senast använda kalkylatorer",
+    "browseCategory": "Bläddra efter kategori",
+    "viewAll": "Visa alla"
+  },
+  "Categories": {
+    "biology": "Biologi",
+    "chemistry": "Kemi",
+    "construction": "Konstruktion",
+    "conversion": "Omvandling",
+    "ecology": "Ekologi",
+    "everyday-life": "Vardagsliv",
+    "finance": "Finansiera",
+    "food": "Mat",
+    "health": "Hälsa",
+    "math": "Matematik",
+    "physics": "Fysik",
+    "sports": "Sport",
+    "statistics": "Statistik",
+    "other": "Andra",
+    "discover": "Upptäck CalcGPT"
+  },
+  "FooterLinks": {
+    "calculatorCategories": "Kalkylatorkategorier",
+    "press": "Trycka",
+    "editorialPolicies": "Redaktionell policy",
+    "partnerships": "Partnerskap",
+    "meetCalcGPT": "Möt CalcGPT",
+    "about": "Om",
+    "resourceLibrary": "Resursbibliotek",
+    "collections": "Samlingar",
+    "privacyPolicy": "Sekretesspolicy",
+    "termsOfService": "Användarvillkor"
+  }
+}

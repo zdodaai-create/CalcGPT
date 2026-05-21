@@ -1,0 +1,50 @@
+{
+  "Navbar": {
+    "search": "Zoek een rekenmachine...",
+    "searchButton": "Zoeken",
+    "biology": "Biologie",
+    "chemistry": "Chemie",
+    "physics": "Natuurkunde",
+    "math": "Wiskunde"
+  },
+  "Footer": {
+    "tagline": "Individuen en ondernemingen versterken met AI-aangedreven rekenmachines.",
+    "language": "Taal"
+  },
+  "Home": {
+    "heroTitle": "2.342 rekenmachines en tellend.",
+    "heroSubtitle": "CalcGPT biedt oplossingen voor een breed scala aan problemen.",
+    "lastUsed": "Laatst gebruikte rekenmachines",
+    "browseCategory": "Bladeren op categorie",
+    "viewAll": "Bekijk alles"
+  },
+  "Categories": {
+    "biology": "Biologie",
+    "chemistry": "Scheikunde",
+    "construction": "Bouw",
+    "conversion": "Conversie",
+    "ecology": "Ecologie",
+    "everyday-life": "Het dagelijks leven",
+    "finance": "Financiën",
+    "food": "Voedsel",
+    "health": "Gezondheid",
+    "math": "Wiskunde",
+    "physics": "Natuurkunde",
+    "sports": "Sport",
+    "statistics": "Statistieken",
+    "other": "Ander",
+    "discover": "Ontdek CalcGPT"
+  },
+  "FooterLinks": {
+    "calculatorCategories": "Rekenmachinecategorieën",
+    "press": "Druk op",
+    "editorialPolicies": "Redactioneel beleid",
+    "partnerships": "Partnerschappen",
+    "meetCalcGPT": "Maak kennis met CalcGPT",
+    "about": "Over",
+    "resourceLibrary": "Bronnenbibliotheek",
+    "collections": "Collecties",
+    "privacyPolicy": "Privacybeleid",
+    "termsOfService": "Servicevoorwaarden"
+  }
+}
