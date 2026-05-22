@@ -13,8 +13,8 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const tCalc = await getTranslations('Calculators');
   const { slug } = await params;
-  const baseUrl = 'https://calcverse.ai';
-  
+  const baseUrl = 'https://calcgpt.online';
+
   if (slug.length === 1) {
     const cat = BIOLOGY_DATA.find(c => c.id === slug[0]);
     if (cat) {
@@ -29,30 +29,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       };
     }
-    
+
     const calc = getCalculatorBySlug(slug[0]);
     if (calc) {
       return {
-        title: `${tCalc(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) ?? calc.name} | Biology Calculator`,
+        title: `${tCalc(`${(calc.slug || '').replace(/-/g, '_')}_name`) ?? calc.name} | Biology Calculator`,
         description: calc.description,
         openGraph: {
           title: calc.name,
           description: calc.description,
-          url: `${baseUrl}/biology/${calc.id}`,
+          url: `${baseUrl}/biology/${calc.slug}`,
         }
       };
     }
   }
-  
+
   if (slug.length === 2) {
     const cat = BIOLOGY_DATA.find(c => c.id === slug[0]);
     const calc = getCalculatorBySlug(slug[1]);
     if (calc) {
       return {
-        title: `${tCalc(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) ?? calc.name} | ${cat?.title || 'Biology'}`,
+        title: `${tCalc(`${(calc.slug || '').replace(/-/g, '_')}_name`) ?? calc.name} | ${cat?.title || 'Biology'}`,
         description: calc.description,
         openGraph: {
-          title: `${tCalc(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) ?? calc.name} - ${cat?.title}`,
+          title: `${tCalc(`${(calc.slug || '').replace(/-/g, '_')}_name`) ?? calc.name} - ${cat?.title}`,
           description: calc.description,
           url: `${baseUrl}/biology/${slug[0]}/${slug[1]}`,
         }
