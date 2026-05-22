@@ -12,8 +12,7 @@ export const config = {
     // - /api
     // - /_next
     // - /_vercel
-    // - all root files inside /public (e.g. /favicon.ico)
     '/((?!api|_next|_vercel|.*\\..*).*)'
   ],
-  runtime: 'edge'
+  runtime: 'experimental-edge'
 };
