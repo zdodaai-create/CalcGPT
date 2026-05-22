@@ -6,7 +6,7 @@ import { CHEMISTRY_DATA } from '@/lib/chemistry-data'; // assume exists or fallb
 import { useTranslations } from 'next-intl';
 
 interface Calculator {
-  id: string;
+  id?: string;
   slug: string;
   name: string;
   description?: string;
