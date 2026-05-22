@@ -34,8 +34,8 @@ export const useSearchContext = () => {
 
 // Utility to flatten all calculators into a single array
 const allCalculators: Calculator[] = [
-  ...(BIOLOGY_DATA?.flatMap(c => c.calculators.map(calc => ({ ...calc, category: c.title })) || []),
-  ...(STATISTICS_DATA?.flatMap(c => c.calculators.map(calc => ({ ...calc, category: c.title })) || []),
+  ...(BIOLOGY_DATA?.flatMap(c => c.calculators.map(calc => ({ ...calc, category: c.title }))) || []),
+  ...(STATISTICS_DATA?.flatMap(c => c.calculators.map(calc => ({ ...calc, category: c.title }))) || []),
   // Add other categories as needed
 ];
 

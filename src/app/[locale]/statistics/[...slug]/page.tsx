@@ -5,12 +5,13 @@ import { STATISTICS_DATA } from '@/lib/statistics-data';
 import { getCalculatorBySlug } from '@/lib/calculator-registry';
 import Script from 'next/script';
 
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 interface Props {
   params: Promise<{ slug: string[] }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const tCalc = await getTranslations('Calculators');
   const { slug } = await params;
   const baseUrl = 'https://calcverse.ai';
   
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const calc = getCalculatorBySlug(slug[0]);
     if (calc) {
       return {
-        title: `${tCalc.has(`${(calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} | Statistics Calculator`,
+        title: `${tCalc.has(`${(calc.id||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.id||'').replace(/-/g, '_')}_name`) : calc.name} | Statistics Calculator`,
         description: calc.description,
         openGraph: {
           title: calc.name,
@@ -48,10 +49,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const calc = getCalculatorBySlug(slug[1]);
     if (calc) {
       return {
-        title: `${tCalc.has(`${(calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} | ${cat?.title || 'Statistics'}`,
+        title: `${tCalc.has(`${(calc.id||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.id||'').replace(/-/g, '_')}_name`) : calc.name} | ${cat?.title || 'Statistics'}`,
         description: calc.description,
         openGraph: {
-          title: `${tCalc.has(`${(calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} - ${cat?.title}`,
+          title: `${tCalc.has(`${(calc.id||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.id||'').replace(/-/g, '_')}_name`) : calc.name} - ${cat?.title}`,
           description: calc.description,
           url: `${baseUrl}/statistics/${slug[0]}/${slug[1]}`,
         }

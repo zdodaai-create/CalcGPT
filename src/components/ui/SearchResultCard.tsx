@@ -5,7 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { useSearchContext } from '@/context/SearchContext';
-
+import { useTranslations } from 'next-intl';
 interface CalculatorResult {
   id: string;
   slug: string;
