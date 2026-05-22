@@ -157,7 +157,7 @@ export default function OtherMegaCategoryPage() {
                             <Card className="border-gray-100 hover:border-amber-500/30 hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300 rounded-[1.5rem] overflow-hidden h-full bg-white">
                               <CardContent className="p-5 flex items-center justify-between">
                                 <span className="font-bold text-[0.95rem] text-gray-800 group-hover:text-amber-600 transition-colors leading-tight">
-                                  {tCalc.has(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) : calc.name}
+                                  {tCalc.has(`${(calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.slug||'').replace(/-/g, '_')}_name`) : calc.name}
                                 </span>
                                 <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-amber-600 transition-all shrink-0 ml-2">
                                   <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />

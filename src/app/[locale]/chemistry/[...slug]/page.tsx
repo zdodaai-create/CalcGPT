@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const calc = getCalculatorBySlug(slug[0]);
     if (calc) {
       return {
-        title: `${tCalc.has(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} | Chemistry Calculator`,
+        title: `${tCalc.has(`${(calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} | Chemistry Calculator`,
         description: calc.description,
         openGraph: {
           title: calc.name,
@@ -48,10 +48,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const calc = getCalculatorBySlug(slug[1]);
     if (calc) {
       return {
-        title: `${tCalc.has(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} | ${cat?.title || 'Chemistry'}`,
+        title: `${tCalc.has(`${(calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} | ${cat?.title || 'Chemistry'}`,
         description: calc.description,
         openGraph: {
-          title: `${tCalc.has(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} - ${cat?.title}`,
+          title: `${tCalc.has(`${(calc.slug||'').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.slug||'').replace(/-/g, '_')}_name`) : calc.name} - ${cat?.title}`,
           description: calc.description,
           url: `${baseUrl}/chemistry/${slug[0]}/${slug[1]}`,
         }

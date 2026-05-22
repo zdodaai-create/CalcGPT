@@ -49,7 +49,7 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
     if (!debouncedQuery) return [];
     const lower = debouncedQuery.toLowerCase();
     const filtered = allCalculators.filter(calc => {
-      const key = `${(calc.id || calc.slug || '').replace(/-/g, '_')}_name`;
+      const key = `${(calc.slug || '').replace(/-/g, '_')}_name`;
       const tr = tCalc(key);
       const displayName = tr === key ? calc.name : tr;
       return displayName.toLowerCase().includes(lower);
