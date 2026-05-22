@@ -1,23 +1,8 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "calcgpt",
+  "main": ".open-next/worker.js",
   "compatibility_date": "2026-05-22",
-  "observability": {
-    "enabled": true
-  },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "calcgpt"
-    }
-  ],
-  "kv_namespaces": [
-    {
-      "binding": "NEXT_CACHE_WORKERS_KV",
-      "id": "YOUR_KV_NAMESPACE_ID"
-    }
-  ]
+  "assets": {
+    "directory": ".open-next/assets"
+  }
 }
