@@ -92,7 +92,7 @@ export default function BiologyClientPage({ slugArray }: { slugArray: string[] }
                       <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-50 transition-colors">
                         <CalcIcon className="w-5 h-5 text-gray-400 group-hover:text-blue-600" />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{tCalc.has(`${(calc.slug || '').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.id || calc.slug || '').replace(/-/g, '_')}_name`) : calc.name}</h3>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{tCalc.has(`${(calc.slug || '').replace(/-/g, '_')}_name`) ? tCalc(`${(calc.slug || '').replace(/-/g, '_')}_name`) : calc.name}</h3>
                       <div className="flex items-center gap-1 text-blue-600 font-bold text-sm">
                         Use Calculator <ChevronRight className="w-4 h-4" />
                       </div>
