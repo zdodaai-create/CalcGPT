@@ -35,7 +35,7 @@ export default function BiologyMegaCategoryPage() {
     // Filter calculators within each category based on translated or original name
     const filteredCategories = BIOLOGY_DATA.map(category => {
       const filteredCalculators = category.calculators.filter(calc => {
-        const key = `${(calc.id || calc.slug || '').replace(/-/g, '_')}_name`;
+        const key = `${(calc.slug || '').replace(/-/g, '_')}_name`;
         const tr = tCalc(key);
         const displayName = tr === key ? calc.name : tr;
         return displayName.toLowerCase().includes(query);
@@ -175,7 +175,7 @@ export default function BiologyMegaCategoryPage() {
                             <Card className="border-gray-100 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 rounded-[1.5rem] overflow-hidden h-full bg-white">
                               <CardContent className="p-5 flex items-center justify-between">
                                 <span className="font-bold text-[0.95rem] text-gray-800 group-hover:text-blue-600 transition-colors leading-tight">
-                                  {(() => { const key = `${(calc.id||calc.slug||'').replace(/-/g, '_')}_name`; const tr = tCalc(key); return tr === key ? calc.name : tr; })()}
+                                  {(() => { const key = `${(calc.slug || '').replace(/-/g, '_')}_name`; const tr = tCalc(key); return tr === key ? calc.name : tr; })()}
                                 </span>
                                 <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-blue-600 transition-all shrink-0 ml-2">
                                   <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
