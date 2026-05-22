@@ -1,14 +1,15 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface AdContainerProps {
   type: 'banner' | 'sidebar' | 'inline' | 'sticky-bottom';
   className?: string;
+  adSlot?: string;
 }
 
-export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "" }) => {
+export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "", adSlot }) => {
   const styles = {
     banner: "w-full min-h-[90px] md:min-h-[120px] mb-12",
     sidebar: "hidden xl:block w-[300px] min-h-[600px] sticky top-24 ml-8",
@@ -22,6 +23,15 @@ export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "" }
     inline: "max-w-[970px] h-[150px] md:h-[200px]",
     "sticky-bottom": "max-w-[320px] h-[80px]",
   };
+
+  useEffect(() => {
+    try {
+      // @ts-ignore
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      console.error("AdSense error:", err);
+    }
+  }, []);
 
   return (
     <motion.div 
@@ -37,19 +47,13 @@ export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "" }
       </div>
       
       <div className={`${innerStyles[type]} w-full bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.04)] flex items-center justify-center relative overflow-hidden group`}>
-        {/* Pattern Background */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" 
-             style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
-        
-        <div className="flex flex-col items-center gap-3 relative z-10">
-          <div className="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center border border-gray-100 dark:border-gray-700 group-hover:scale-110 transition-transform">
-            <div className="w-5 h-5 border-2 border-gray-200 dark:border-gray-600 rounded-sm" />
-          </div>
-          <p className="text-gray-400 text-[11px] font-bold tracking-tight">Advertisement Placeholder</p>
-        </div>
-
-        {/* Hover Shine Effect */}
-        <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-[-20deg]" />
+        <ins
+          className="adsbygoogle block w-full h-full"
+          data-ad-client="ca-pub-9176484091341823"
+          data-ad-slot={adSlot}
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
       </div>
     </motion.div>
   );
