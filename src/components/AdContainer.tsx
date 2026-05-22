@@ -25,12 +25,18 @@ export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "", 
   };
 
   useEffect(() => {
-    try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (err) {
-      console.error("AdSense error:", err);
-    }
+    // A small timeout ensures Framer Motion and the browser layout have calculated
+    // the container widths before AdSense tries to fill it.
+    const timer = setTimeout(() => {
+      try {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (err) {
+        console.error("AdSense error:", err);
+      }
+    }, 150);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -48,7 +54,8 @@ export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "", 
       
       <div className={`${innerStyles[type]} w-full bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.04)] flex items-center justify-center relative overflow-hidden group`}>
         <ins
-          className="adsbygoogle block w-full h-full"
+          className="adsbygoogle w-full h-full"
+          style={{ display: "block" }}
           data-ad-client="ca-pub-9176484091341823"
           data-ad-slot={adSlot}
           data-ad-format="auto"

@@ -63,15 +63,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
+      <head />
+      <body className={`${inter.variable} ${poppins.variable} font-poppins min-h-screen bg-background text-foreground antialiased`}>
         <Script
           async
           strategy="afterInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9176484091341823"
           crossOrigin="anonymous"
         />
-      </head>
-      <body className={`${inter.variable} ${poppins.variable} font-poppins min-h-screen bg-background text-foreground antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
