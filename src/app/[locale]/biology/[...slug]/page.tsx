@@ -33,12 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const calc = getCalculatorBySlug(slug[0]);
     if (calc) {
       return {
-        title: `${tCalc(`${(calc.slug || '').replace(/-/g, '_')}_name`) ?? calc.name} | Biology Calculator`,
+        title: `${tCalc(`${(calc.id || '').replace(/-/g, '_')}_name`) ?? calc.name} | Biology Calculator`,
         description: calc.description,
         openGraph: {
           title: calc.name,
           description: calc.description,
-          url: `${baseUrl}/biology/${calc.slug}`,
+          url: `${baseUrl}/biology/${calc.id}`,
         }
       };
     }
@@ -49,10 +49,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const calc = getCalculatorBySlug(slug[1]);
     if (calc) {
       return {
-        title: `${tCalc(`${(calc.slug || '').replace(/-/g, '_')}_name`) ?? calc.name} | ${cat?.title || 'Biology'}`,
+        title: `${tCalc(`${(calc.id || '').replace(/-/g, '_')}_name`) ?? calc.name} | ${cat?.title || 'Biology'}`,
         description: calc.description,
         openGraph: {
-          title: `${tCalc(`${(calc.slug || '').replace(/-/g, '_')}_name`) ?? calc.name} - ${cat?.title}`,
+          title: `${tCalc(`${(calc.id || '').replace(/-/g, '_')}_name`) ?? calc.name} - ${cat?.title}`,
           description: calc.description,
           url: `${baseUrl}/biology/${slug[0]}/${slug[1]}`,
         }
