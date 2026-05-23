@@ -65,7 +65,6 @@ const CATEGORIES = CATEGORIES_BASE.map(cat => {
   
   return { ...cat, count: count || 0 };
 });
-];
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
