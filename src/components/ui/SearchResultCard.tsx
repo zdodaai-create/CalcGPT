@@ -43,8 +43,15 @@ export default function SearchResultCard({ result, highlighted }: Props) {
 
   // Build translation key for the calculator name
   const key = `${(result.id || result.slug || '').replace(/-/g, '_')}_name`;
-  const tr = tCalc(key);
-  const displayName = tr === key ? result.name : tr;
+  let displayName = result.name;
+  try {
+    if ((tCalc as any).has && (tCalc as any).has(key)) {
+       displayName = tCalc(key);
+    } else {
+       const tr = tCalc(key);
+       if (!tr.includes(key) && !tr.includes('Calculators.')) displayName = tr;
+    }
+  } catch (e) {}
 
   // URL: assume structure /<locale>/<category>/<slug>
   const href = `/${result.category.toLowerCase()}/${result.slug}`;

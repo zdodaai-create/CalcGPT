@@ -50,8 +50,15 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
     const lower = debouncedQuery.toLowerCase();
     const filtered = allCalculators.filter(calc => {
       const key = `${(calc.slug || '').replace(/-/g, '_')}_name`;
-      const tr = tCalc(key);
-      const displayName = tr === key ? calc.name : tr;
+      let displayName = calc.name;
+      try {
+        if ((tCalc as any).has && (tCalc as any).has(key)) {
+           displayName = tCalc(key);
+        } else {
+           const tr = tCalc(key);
+           if (!tr.includes(key) && !tr.includes('Calculators.')) displayName = tr;
+        }
+      } catch (e) {}
       return displayName.toLowerCase().includes(lower);
     });
     return filtered;

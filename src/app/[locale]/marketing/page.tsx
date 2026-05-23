@@ -34,10 +34,7 @@ export default function MarketingMegaCategoryPage() {
 
     const filteredCategories = MARKETING_DATA.map(category => {
       const filteredCalculators = category.calculators.filter(calc => {
-        const key = `${(calc.slug || '').replace(/-/g, '_')}_name`;
-        const tr = tCalc(key);
-        const displayName = tr === key ? calc.name : tr;
-        return displayName.toLowerCase().includes(query);
+        return calc.name.toLowerCase().includes(query);
       });
       return { ...category, calculators: filteredCalculators };
     })
@@ -162,7 +159,7 @@ export default function MarketingMegaCategoryPage() {
                             <Card className="border-gray-100 hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/5 transition-all duration-300 rounded-[1.5rem] overflow-hidden h-full bg-white">
                               <CardContent className="p-5 flex items-center justify-between">
                                 <span className="font-bold text-[0.95rem] text-gray-800 group-hover:text-purple-600 transition-colors leading-tight">
-                                  {(() => { const key = `${(calc.slug || '').replace(/-/g, '_')}_name`; const tr = tCalc(key); return tr === key ? calc.name : tr; })()}
+                                  {calc.name}
                                 </span>
                                 <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-purple-600 transition-all shrink-0 ml-2">
                                   <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
