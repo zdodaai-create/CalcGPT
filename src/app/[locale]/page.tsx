@@ -220,8 +220,6 @@ export default function HomePage() {
         <AdContainer type="sidebar" />
       </div>
 
-      {/* Mobile Sticky Bottom Ad */}
-      <AdContainer type="sticky-bottom" />
     </div>
   );
 }
