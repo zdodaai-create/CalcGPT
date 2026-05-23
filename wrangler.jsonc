@@ -5,5 +5,14 @@
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets"
+  },
+  "vars": {
+    "NEXT_PUBLIC_FIREBASE_API_KEY": "AIzaSyDN6lW81TIV1Kpu6PIMMGr01dv3T-joxDY",
+    "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN": "calcgpt-dcffa.firebaseapp.com",
+    "NEXT_PUBLIC_FIREBASE_PROJECT_ID": "calcgpt-dcffa",
+    "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET": "calcgpt-dcffa.firebasestorage.app",
+    "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "533007518391",
+    "NEXT_PUBLIC_FIREBASE_APP_ID": "1:533007518391:web:5c6199c78ff4a40f2f9b32",
+    "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID": "G-XK7BG1VENZ"
   }
 }
