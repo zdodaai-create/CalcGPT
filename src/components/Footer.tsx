@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+
 import { useTranslations } from 'next-intl';
 import { 
   Facebook, 
@@ -64,10 +64,7 @@ export function Footer() {
               </a>
             </div>
 
-            {/* Language Switcher */}
-            <div className="mt-8 flex justify-center lg:justify-start w-full">
-              <LanguageSwitcher />
-            </div>
+
           </div>
 
           {/* Right Columns (Categories & Custom links) */}

@@ -18,7 +18,7 @@ export const config = {
   // Match only internationalized pathnames
   matcher: [
     '/',
-    '/(de|en|es|fr|it|nl|pl|pt|sv)/:path*',
+    '/(en)/:path*',
     // Match all pathnames except for
     // - /api
     // - /_next
