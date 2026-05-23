@@ -36,6 +36,7 @@ import { AdContainer } from '@/components/AdContainer';
 import { CategoryCard } from '@/components/CategoryCard';
 import { CategorySkeleton } from '@/components/CategorySkeleton';
 import { useTranslations } from 'next-intl';
+import { useAuth } from '@/components/AuthProvider';
 
 const CATEGORIES = [
   { id: 'biology', title: 'Biology', count: 106, color: 'text-green-500', href: '/biology', Icon: Dna },
@@ -58,6 +59,7 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const t = useTranslations('Home');
   const tNav = useTranslations('Navbar');
+  const { loginWithGoogle } = useAuth();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
@@ -221,7 +223,10 @@ export default function HomePage() {
               <p className="text-gray-400 text-lg mb-10 leading-relaxed font-medium">
                 Save your favorite tools, sync history across devices, and get personalized smart recommendations.
               </p>
-              <button className="w-full bg-white text-black py-5 rounded-full font-extrabold text-lg hover:bg-gray-100 transition-colors shadow-xl">
+              <button 
+                onClick={loginWithGoogle}
+                className="w-full bg-white text-black py-5 rounded-full font-extrabold text-lg hover:bg-gray-100 transition-colors shadow-xl"
+              >
                 Sign Up for Free
               </button>
             </div>
