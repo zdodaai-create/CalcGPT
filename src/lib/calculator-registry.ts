@@ -52,6 +52,8 @@ import { MARKETING_CALCULATORS_ADS } from "./marketing-calculators-ads";
 import { MARKETING_CALCULATORS_CONVERSION } from "./marketing-calculators-conversion";
 import { MARKETING_CALCULATORS_ROI } from "./marketing-calculators-roi";
 import { MARKETING_CALCULATORS_CUSTOMER } from "./marketing-calculators-customer";
+import { MARKETING_BATCH2_A } from "./marketing-calculators-batch2-a";
+import { MARKETING_BATCH2_B } from "./marketing-calculators-batch2-b";
 
 export const CALCULATOR_REGISTRY: CalculatorConfig[] = [
   // Keeping this array empty or just for core uncategorized tools
@@ -166,6 +168,8 @@ export const ALL_CALCULATORS: CalculatorConfig[] = [
   ...MARKETING_CALCULATORS_CONVERSION,
   ...MARKETING_CALCULATORS_ROI,
   ...MARKETING_CALCULATORS_CUSTOMER,
+  ...MARKETING_BATCH2_A,
+  ...MARKETING_BATCH2_B,
   ...OTHER_DATA.flatMap(sub => 
     sub.calculators
       .filter(calc => 
