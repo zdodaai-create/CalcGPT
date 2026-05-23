@@ -48,11 +48,11 @@ export const DynamicGraph: React.FC<DynamicGraphProps> = ({ config, currentInput
       });
 
       try {
-        const result = evaluate(targetOutput.formula, baseValues);
+        const result = evaluate(targetOutput.formula || '', baseValues);
         if (typeof result === 'number' && !isNaN(result) && result !== Infinity) {
           plotData.push({
-            [sweepInput.label]: Number(testVal.toFixed(2)),
-            [targetOutput.label]: Number(result.toFixed(4)),
+            [sweepInput.label || sweepInput.name || 'x']: Number(testVal.toFixed(2)),
+            [targetOutput.label || targetOutput.name || 'y']: Number(result.toFixed(4)),
             isCurrent: mult === 1.0
           });
         }
@@ -63,8 +63,8 @@ export const DynamicGraph: React.FC<DynamicGraphProps> = ({ config, currentInput
 
     return {
       data: plotData,
-      xKey: sweepInput.label,
-      yKey: targetOutput.label,
+      xKey: sweepInput.label || sweepInput.name || 'x',
+      yKey: targetOutput.label || targetOutput.name || 'y',
       xUnit: currentUnits[sweepInput.id] || sweepInput.unit || '',
       yUnit: targetOutput.unit || ''
     };

@@ -281,7 +281,7 @@ export const MARKETING_BATCH2_B: CalculatorConfig[] = [
       const cpm = inputs.cpm || 0;
       // YouTube takes 45%, creator keeps 55%
       const earnings = ((views * rate) / 1000) * cpm * 0.55;
-      return { earnings, note: "Assumes standard 55% creator revenue share." };
+      return { earnings, note: "Assumes standard 55% creator revenue share." } as any;
     }
   },
   {

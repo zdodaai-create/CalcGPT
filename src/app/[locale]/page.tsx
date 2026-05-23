@@ -42,6 +42,7 @@ import { CategorySkeleton } from '@/components/CategorySkeleton';
 import { useTranslations } from 'next-intl';
 import { useAuth } from '@/components/AuthProvider';
 import { ALL_CALCULATORS } from '@/lib/calculator-registry';
+import { getRecentCalculators } from '@/lib/recent-calculators';
 
 const CATEGORIES_BASE = [
   { id: 'biology', title: 'Biology', color: 'text-green-500', href: '/biology', Icon: Dna },
@@ -107,6 +108,29 @@ export default function HomePage() {
   const t = useTranslations('Home');
   const tNav = useTranslations('Navbar');
   const { loginWithGoogle } = useAuth();
+
+  const [recentCalculators, setRecentCalculators] = useState<any[]>([]);
+
+  useEffect(() => {
+    const list = getRecentCalculators();
+    if (list.length > 0) {
+      setRecentCalculators(list);
+    } else {
+      // Fallback defaults when history is empty
+      setRecentCalculators([
+        { id: 'bmi-calculator', name: 'BMI Calculator', category: 'Health' },
+        { id: 'compound-interest-calculator', name: 'Compound Interest', category: 'Finance' },
+        { id: 'loan-calculator', name: 'Loan Payment', category: 'Finance' },
+        { id: 'calorie-deficit-calculator', name: 'Calorie Deficit', category: 'Health' },
+        { id: 'concrete-calculator', name: 'Concrete Estimator', category: 'Construction' }
+      ]);
+    }
+  }, []);
+
+  const getCategoryIcon = (category: string) => {
+    const match = CATEGORIES_BASE.find(c => c.id === category.toLowerCase() || c.title.toLowerCase() === category.toLowerCase());
+    return match ? match.Icon : Shapes;
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
@@ -288,27 +312,25 @@ export default function HomePage() {
           </div>
           
           <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-2 px-2">
-            {[
-              { name: 'BMI Calculator', icon: Activity, category: 'Health' },
-              { name: 'Compound Interest', icon: PiggyBank, category: 'Finance' },
-              { name: 'Loan Payment', icon: Home, category: 'Finance' },
-              { name: 'Calorie Deficit', icon: Apple, category: 'Health' },
-              { name: 'Concrete Estimator', icon: HardHat, category: 'Construction' }
-            ].map((calc, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ y: -8, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
-                className="min-w-[200px] md:min-w-[240px] bg-gray-50/50 p-5 md:p-6 rounded-3xl border border-gray-100 flex items-center gap-3 md:gap-4 cursor-pointer hover:bg-white transition-all shrink-0"
-              >
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-blue-600 shrink-0">
-                  <calc.icon className="w-5 h-5 md:w-6 md:h-6" />
-                </div>
-                <div>
-                  <div className="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">{calc.category}</div>
-                  <div className="text-sm md:text-base font-bold text-gray-900 leading-tight">{calc.name}</div>
-                </div>
-              </motion.div>
-            ))}
+            {recentCalculators.map((calc, i) => {
+              const IconComponent = getCategoryIcon(calc.category);
+              return (
+                <Link key={calc.id || i} href={`/calculator/${calc.id}`}>
+                  <motion.div 
+                    whileHover={{ y: -8, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
+                    className="min-w-[200px] md:min-w-[240px] bg-gray-50/50 p-5 md:p-6 rounded-3xl border border-gray-100 flex items-center gap-3 md:gap-4 cursor-pointer hover:bg-white transition-all shrink-0"
+                  >
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-blue-600 shrink-0">
+                      <IconComponent className="w-5 h-5 md:w-6 md:h-6" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">{calc.category}</div>
+                      <div className="text-sm md:text-base font-bold text-gray-900 leading-tight">{calc.name}</div>
+                    </div>
+                  </motion.div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -77,7 +77,7 @@ export const DynamicCalculator: React.FC<DynamicCalculatorProps> = ({ config }) 
         if (config.subcategory === 'animal-pregnancy' && (output.id === 'due_date' || output.id === 'date')) {
           const dateVal = new Date(inputs['date'] || inputs['mating_date'] || inputs['breeding_date']);
           if (!isNaN(dateVal.getTime())) {
-            const daysToAdd = parseInt(output.formula); // In pregnancy calcs, we store days as formula for now
+            const daysToAdd = parseInt(output.formula || '0'); // In pregnancy calcs, we store days as formula for now
             dateVal.setDate(dateVal.getDate() + daysToAdd);
             res[output.id] = dateVal.toLocaleDateString(undefined, { 
               weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
@@ -756,7 +756,7 @@ export const DynamicCalculator: React.FC<DynamicCalculatorProps> = ({ config }) 
 
 
         // Standard MathJS
-        const result = evaluate(output.formula, baseValues);
+        const result = evaluate(output.formula || '', baseValues);
         // Convert mathjs objects (BigNumber, Fraction) to plain numbers
         res[output.id] = (result !== null && typeof result === 'object') ? Number(result) : result;
       } catch (err) {
@@ -773,7 +773,7 @@ export const DynamicCalculator: React.FC<DynamicCalculatorProps> = ({ config }) 
           <CalculatorInput
             key={input.id}
             id={input.id}
-            label={input.label}
+            label={input.label || input.name || ''}
             type={input.type}
             value={inputs[input.id]}
             onChange={(val) => handleInputChange(input.id, val)}
@@ -802,7 +802,7 @@ export const DynamicCalculator: React.FC<DynamicCalculatorProps> = ({ config }) 
           {config.outputs.map((output) => (
             <ResultCard
               key={output.id}
-              label={output.label}
+              label={output.label || output.name || ''}
               value={results[output.id]}
               unit={output.unit}
               description={output.description}
@@ -839,25 +839,25 @@ export const DynamicCalculator: React.FC<DynamicCalculatorProps> = ({ config }) 
                   <span className="text-gray-400"># Given Values:</span><br/>
                   {config.inputs.map(i => (
                      <div key={i.id} className="text-gray-200">
-                       {i.label.replace(/\(.*\)/, '').trim()}: <span className="text-blue-300">{inputs[i.id]}</span> {units[i.id] || i.unit}
+                       {(i.label || i.name || '').replace(/\(.*\)/, '').trim()}: <span className="text-blue-300">{inputs[i.id]}</span> {units[i.id] || i.unit}
                      </div>
                   ))}
                </div>
                <div>
                   <span className="text-gray-400"># Formula:</span><br/>
-                  <span className="text-yellow-300">{config.outputs[0].label.replace(/\(.*\)/, '').trim()}</span> = {config.outputs[0].formula}
+                  <span className="text-yellow-300">{(config.outputs[0]?.label || config.outputs[0]?.name || '').replace(/\(.*\)/, '').trim()}</span> = {config.outputs[0]?.formula}
                </div>
                <div>
                   <span className="text-gray-400"># Substitution:</span><br/>
-                  <span className="text-yellow-300">{config.outputs[0].label.replace(/\(.*\)/, '').trim()}</span> = {
-                    config.outputs[0].formula.replace(/[a-zA-Z_]+/g, (match) => {
+                  <span className="text-yellow-300">{(config.outputs[0]?.label || config.outputs[0]?.name || '').replace(/\(.*\)/, '').trim()}</span> = {
+                    (config.outputs[0]?.formula || '').replace(/[a-zA-Z_]+/g, (match) => {
                        if (inputs[match] !== undefined && inputs[match] !== '') return inputs[match];
                        return match;
                     })
                   }
                </div>
                <div className="pt-4 border-t border-white/10 text-green-400 font-bold text-lg mt-2">
-                  Final Answer: {typeof results[config.outputs[0].id] === 'number' ? Number(results[config.outputs[0].id]).toLocaleString(undefined, {maximumFractionDigits: 4}) : results[config.outputs[0].id]} {config.outputs[0].unit}
+                  Final Answer: {typeof results[config.outputs[0].id] === 'number' ? Number(results[config.outputs[0].id]).toLocaleString(undefined, {maximumFractionDigits: 4}) : results[config.outputs[0].id]} {config.outputs[0]?.unit}
                </div>
              </div>
           </div>

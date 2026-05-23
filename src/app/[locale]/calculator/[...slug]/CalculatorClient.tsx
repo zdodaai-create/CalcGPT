@@ -1,12 +1,13 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getCalculatorBySlug } from '@/lib/calculator-registry';
 import { DynamicCalculator } from '@/components/calculator/DynamicCalculator';
 import { AIAssistant } from '@/components/ai/AIAssistant';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { AdContainer } from '@/components/AdContainer';
+import { recordCalculatorVisit } from '@/lib/recent-calculators';
 import 'katex/dist/katex.min.css';
 import { 
   Sparkles, ArrowLeft, Info, Share2, Bookmark, ChevronRight, 
@@ -19,6 +20,16 @@ import { BlockMath } from 'react-katex';
 
 export function CalculatorClient({ slug }: { slug: string }) {
   const calculator = getCalculatorBySlug(slug);
+
+  useEffect(() => {
+    if (calculator) {
+      recordCalculatorVisit({
+        id: calculator.id,
+        name: calculator.name,
+        category: calculator.category
+      });
+    }
+  }, [calculator]);
 
   if (!calculator) {
     return (

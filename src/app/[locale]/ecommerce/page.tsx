@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
@@ -8,16 +8,31 @@ import {
   Filter,
   ShoppingCart,
   ArrowRight,
-  ChevronDown
+  ChevronDown,
+  X
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { AdContainer } from '@/components/AdContainer';
 import { ECOMMERCE_DATA } from '@/lib/ecommerce-data';
 
+// Flatten all calculators for search
+const ALL_CALCULATORS = ECOMMERCE_DATA.flatMap(cat =>
+  cat.calculators.map(calc => ({
+    ...calc,
+    categoryName: cat.name,
+    categoryColor: cat.color,
+  }))
+);
+
 export default function EcommerceMegaCategoryPage() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState<string[]>(ECOMMERCE_DATA.map(c => c.id));
+  const searchRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const totalEcommerceCalculators = useMemo(() => {
     return ECOMMERCE_DATA.reduce((acc, cat) => acc + cat.calculators.length, 0);
@@ -29,8 +44,19 @@ export default function EcommerceMegaCategoryPage() {
     );
   };
 
+  // Filtered for the dropdown — search all 50 calculators
+  const searchResults = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return [];
+    return ALL_CALCULATORS.filter(calc =>
+      calc.name.toLowerCase().includes(query) ||
+      calc.categoryName.toLowerCase().includes(query)
+    ).slice(0, 10);
+  }, [searchQuery]);
+
+  // Filtered grid below search bar
   const filteredData = useMemo(() => {
-    const query = searchQuery.toLowerCase();
+    const query = searchQuery.trim().toLowerCase();
     if (!query) return ECOMMERCE_DATA;
     return ECOMMERCE_DATA.map(category => ({
       ...category,
@@ -39,6 +65,34 @@ export default function EcommerceMegaCategoryPage() {
       )
     })).filter(cat => cat.calculators.length > 0 || cat.name.toLowerCase().includes(query));
   }, [searchQuery]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setShowDropdown(true);
+  };
+
+  const handleResultClick = (slug: string) => {
+    setShowDropdown(false);
+    setSearchQuery("");
+    router.push(`/calculator/${slug}`);
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setShowDropdown(false);
+    inputRef.current?.focus();
+  };
 
   return (
     <div className="min-h-screen bg-[#F8F9FA] pt-12 pb-20">
@@ -80,22 +134,85 @@ export default function EcommerceMegaCategoryPage() {
           </div>
         </div>
 
-        {/* Search & Stats Bar */}
-        <div className="sticky top-4 z-30 mb-12">
+        {/* Search Bar with Live Dropdown */}
+        <div className="sticky top-4 z-30 mb-12" ref={searchRef}>
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-3 shadow-xl shadow-gray-200/50 border border-gray-100 flex flex-col md:flex-row gap-3 items-center">
             <div className="relative flex-1 w-full">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
+                ref={inputRef}
                 type="text"
                 placeholder={`Search across ${totalEcommerceCalculators} ecommerce calculators...`}
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-14 bg-gray-50/50 border-0 rounded-2xl pl-14 pr-6 focus:ring-2 focus:ring-green-500/20 transition-all text-lg font-medium"
+                onChange={handleInputChange}
+                onFocus={() => searchQuery && setShowDropdown(true)}
+                className="w-full h-14 bg-gray-50/50 border-0 rounded-2xl pl-14 pr-12 focus:ring-2 focus:ring-green-500/20 transition-all text-lg font-medium outline-none"
               />
+              {searchQuery && (
+                <button
+                  onClick={clearSearch}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-200 transition-colors"
+                >
+                  <X className="w-4 h-4 text-gray-400" />
+                </button>
+              )}
+
+              {/* Live Search Dropdown */}
+              <AnimatePresence>
+                {showDropdown && searchResults.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50"
+                  >
+                    <div className="p-2">
+                      <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-3 py-2">
+                        {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} found
+                      </p>
+                      {searchResults.map((calc, i) => (
+                        <button
+                          key={calc.slug}
+                          onClick={() => handleResultClick(calc.slug)}
+                          className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-green-50 transition-colors group text-left"
+                        >
+                          <div className={`w-8 h-8 rounded-lg ${calc.categoryColor} flex items-center justify-center shrink-0`}>
+                            <ShoppingCart className="w-4 h-4 text-white" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-bold text-gray-800 group-hover:text-green-700 transition-colors truncate">
+                              {calc.name}
+                            </p>
+                            <p className="text-xs text-gray-400 truncate">{calc.categoryName}</p>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-green-500 transition-colors shrink-0" />
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* No results state */}
+                {showDropdown && searchQuery.trim() && searchResults.length === 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 z-50 text-center"
+                  >
+                    <p className="text-gray-400 font-medium">No calculators found for &quot;{searchQuery}&quot;</p>
+                    <p className="text-sm text-gray-300 mt-1">Try a different keyword</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
+
             <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-2xl border border-gray-100 shrink-0">
               <Filter className="w-4 h-4 text-gray-400" />
-              <span className="text-sm font-bold text-gray-600">{filteredData.length} Categories</span>
+              <span className="text-sm font-bold text-gray-600">
+                {searchQuery ? `${searchResults.length} matches` : `${filteredData.length} Categories`}
+              </span>
             </div>
           </div>
         </div>
@@ -180,6 +297,20 @@ export default function EcommerceMegaCategoryPage() {
               )}
             </div>
           ))}
+
+          {/* Empty state when search finds nothing */}
+          {filteredData.length === 0 && searchQuery && (
+            <div className="text-center py-20">
+              <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Search className="w-8 h-8 text-gray-300" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-500 mb-2">No results for &quot;{searchQuery}&quot;</h3>
+              <p className="text-gray-400">Try searching by calculator name or category</p>
+              <button onClick={clearSearch} className="mt-4 px-6 py-2 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-colors">
+                Clear Search
+              </button>
+            </div>
+          )}
         </div>
 
         {/* SEO Section */}
