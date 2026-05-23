@@ -54,15 +54,15 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 pt-16 pb-20 text-center">
+      <section className="max-w-7xl mx-auto px-4 pt-10 pb-16 md:pt-16 md:pb-20 text-center">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 md:mb-8"
         >
           {t('heroTitle')}
         </motion.h1>
-        <p className="text-xl text-gray-500 mb-12 max-w-2xl mx-auto font-medium">
+        <p className="text-lg sm:text-xl text-gray-500 mb-10 md:mb-12 max-w-2xl mx-auto font-medium px-2">
           {t('heroSubtitle')}
         </p>
         
@@ -78,19 +78,19 @@ export default function HomePage() {
       </section>
 
       {/* Last Used Section */}
-      <section className="max-w-[1400px] mx-auto px-4 mb-20">
-        <div className="bg-white rounded-[2.5rem] p-10 shadow-sm border border-gray-100 relative overflow-hidden group">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold flex items-center gap-3 text-gray-900">
-              <History className="w-7 h-7 text-blue-600" />
+      <section className="max-w-[1400px] mx-auto px-4 mb-16 md:mb-20">
+        <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-sm border border-gray-100 relative overflow-hidden group">
+          <div className="flex items-center justify-between mb-6 md:mb-8">
+            <h2 className="text-xl md:text-2xl font-bold flex items-center gap-3 text-gray-900">
+              <History className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
               {t('lastUsed')}
             </h2>
-            <button className="p-3 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors">
-              <ChevronRight className="w-6 h-6 text-gray-400" />
+            <button className="p-2 md:p-3 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors">
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-400" />
             </button>
           </div>
           
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-2 px-2">
             {[
               { name: 'BMI Calculator', icon: '⚖️', category: 'Health' },
               { name: 'Compound Interest', icon: '💰', category: 'Finance' },
@@ -101,14 +101,14 @@ export default function HomePage() {
               <motion.div 
                 key={i}
                 whileHover={{ y: -8, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
-                className="min-w-[240px] bg-gray-50/50 p-6 rounded-3xl border border-gray-100 flex items-center gap-4 cursor-pointer hover:bg-white transition-all"
+                className="min-w-[200px] md:min-w-[240px] bg-gray-50/50 p-5 md:p-6 rounded-3xl border border-gray-100 flex items-center gap-3 md:gap-4 cursor-pointer hover:bg-white transition-all shrink-0"
               >
-                <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-xl md:text-2xl shrink-0">
                   {calc.icon}
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">{calc.category}</div>
-                  <div className="font-bold text-gray-900 leading-tight">{calc.name}</div>
+                  <div className="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">{calc.category}</div>
+                  <div className="text-sm md:text-base font-bold text-gray-900 leading-tight">{calc.name}</div>
                 </div>
               </motion.div>
             ))}
@@ -117,29 +117,47 @@ export default function HomePage() {
       </section>
 
       {/* Categories Grid */}
-      <section className="max-w-[1400px] mx-auto px-4 mb-20">
-        <div className="flex items-center justify-between mb-10">
-          <h2 className="text-3xl font-extrabold text-gray-900">{t('browseCategory')}</h2>
-          <Link href="/all" className="text-blue-600 font-bold hover:underline flex items-center gap-1 text-lg">
-            {t('viewAll')} <ChevronRight className="w-5 h-5" />
+      <section className="max-w-[1400px] mx-auto px-4 mb-16 md:mb-20">
+        <div className="flex items-center justify-between mb-8 md:mb-10">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">{t('browseCategory')}</h2>
+          <Link href="/all" className="text-blue-600 font-bold hover:underline flex items-center gap-1 text-sm md:text-lg">
+            {t('viewAll')} <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-6">
+        <motion.div 
+          initial="hidden"
+          animate="show"
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: { staggerChildren: 0.05 }
+            }
+          }}
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-4 md:gap-6"
+        >
           {loading ? (
             Array(14).fill(0).map((_, i) => <CategorySkeleton key={i} />)
           ) : (
             CATEGORIES.map((cat) => (
-              <CategoryCard 
+              <motion.div
                 key={cat.id}
-                title={cat.title}
-                count={cat.count}
-                icon={<Calculator className={`w-6 h-6 ${cat.color}`} />}
-                href={(cat as any).href || `/category/${cat.id}`}
-              />
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 }
+                }}
+              >
+                <CategoryCard 
+                  title={cat.title}
+                  count={cat.count}
+                  icon={<Calculator className={`w-5 h-5 md:w-6 md:h-6 ${cat.color}`} />}
+                  href={(cat as any).href || `/category/${cat.id}`}
+                />
+              </motion.div>
             ))
           )}
-        </div>
+        </motion.div>
       </section>
 
       {/* Inline Ad Section */}
