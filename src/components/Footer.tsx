@@ -24,7 +24,8 @@ import {
   Heart,
   Activity,
   Star,
-  Megaphone
+  Megaphone,
+  ShoppingCart
 } from 'lucide-react';
 
 export function Footer() {
@@ -184,6 +185,12 @@ export function Footer() {
                     <Megaphone className="w-[18px] h-[18px] text-[#2563EB] group-hover:scale-110 transition-transform duration-200" />
                     <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       Marketing
+                    </span>
+                  </Link>
+                  <Link href="/ecommerce" className="group flex items-center gap-3 py-1.5 cursor-pointer">
+                    <ShoppingCart className="w-[18px] h-[18px] text-[#2563EB] group-hover:scale-110 transition-transform duration-200" />
+                    <span className="text-sm font-semibold text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      Ecommerce
                     </span>
                   </Link>
                 </div>

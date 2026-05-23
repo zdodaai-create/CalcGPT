@@ -1,21 +1,25 @@
 export type InputFieldType = 'number' | 'text' | 'select' | 'range' | 'date';
+export type FormatterType = 'currency' | 'percentage' | 'number' | 'text';
 
 export interface UnitOption {
   label: string;
   value: string;
-  factor: number; // Factor to convert to base unit (e.g., if base is meter, cm factor is 0.01)
-  offset?: number; // For temperature (Celsius to Kelvin etc)
+  factor: number;
+  offset?: number;
 }
 
 export interface InputField {
   id: string;
-  label: string;
+  /** Display name (used by batch/ecommerce/marketing calculators) */
+  name?: string;
+  /** Display label (used by older MathJS-based calculators) */
+  label?: string;
   type: InputFieldType;
   placeholder?: string;
   defaultValue?: any;
-  options?: { label: string; value: any }[]; // For 'select' type
-  unit?: string; // Default display unit
-  unitOptions?: UnitOption[]; // Options for unit conversion
+  options?: { label: string; value: any }[];
+  unit?: string;
+  unitOptions?: UnitOption[];
   validation?: {
     min?: number;
     max?: number;
@@ -23,12 +27,22 @@ export interface InputField {
     pattern?: string;
   };
   helpText?: string;
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
 export interface OutputField {
   id: string;
-  label: string;
-  formula: string; // MathJS formula
+  /** Display name (used by batch/ecommerce/marketing calculators) */
+  name?: string;
+  /** Display label (used by older MathJS-based calculators) */
+  label?: string;
+  /** MathJS formula string (older calculators) */
+  formula?: string;
+  /** Formatter type (batch calculators) */
+  formatter?: FormatterType;
+  type?: string;
   unit?: string;
   unitOptions?: UnitOption[];
   description?: string;
@@ -43,11 +57,15 @@ export interface CalculatorConfig {
   subcategory?: string;
   inputs: InputField[];
   outputs: OutputField[];
+
+  /** Programmatic calculate function (batch/ecommerce/marketing calculators) */
+  calculate?: (inputs: Record<string, number>) => Record<string, number>;
+
   formulaExplanation?: string;
   steps?: string[];
-  scientificFormula?: string; // LaTeX or similar for display
+  scientificFormula?: string;
   faq?: { question: string; answer: string }[];
-  
+
   // Educational Content Extensions
   seoMeta?: { title: string; description: string; keywords: string };
   theory?: string;
@@ -56,4 +74,5 @@ export interface CalculatorConfig {
   examples?: { problem: string; solution: string }[];
   commonMistakes?: string[];
   resultInterpretation?: string;
+  relatedCalculators?: string[];
 }

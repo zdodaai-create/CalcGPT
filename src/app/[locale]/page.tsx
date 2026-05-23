@@ -30,7 +30,8 @@ import {
   PiggyBank,
   Home,
   Apple,
-  Megaphone
+  Megaphone,
+  ShoppingCart
 } from 'lucide-react';
 import Link from 'next/link';
 import { AdContainer } from '@/components/AdContainer';
@@ -55,6 +56,7 @@ const CATEGORIES_BASE = [
   { id: 'sports', title: 'Sports', color: 'text-emerald-500', href: '/sports', Icon: Trophy },
   { id: 'statistics', title: 'Statistics', color: 'text-slate-600', href: '/statistics', Icon: BarChart2 },
   { id: 'marketing', title: 'Marketing', color: 'text-purple-500', href: '/marketing', Icon: Megaphone },
+  { id: 'ecommerce', title: 'Ecommerce', color: 'text-indigo-600', href: '/ecommerce', Icon: ShoppingCart },
   { id: 'other', title: 'Other', color: 'text-amber-600', href: '/other', Icon: Shapes },
 ];
 

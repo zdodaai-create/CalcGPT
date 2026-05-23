@@ -149,6 +149,14 @@ export function Navbar() {
                     </div>
                     <ChevronRight className="w-4 h-4 text-blue-400" />
                   </Link>
+                  <Link href="/marketing" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 active:bg-gray-100 transition-colors">
+                    <span className="font-semibold text-gray-700">Marketing</span>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </Link>
+                  <Link href="/ecommerce" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 active:bg-gray-100 transition-colors">
+                    <span className="font-semibold text-gray-700">Ecommerce</span>
+                    <ChevronRight className="w-4 h-4 text-gray-400" />
+                  </Link>
                 </div>
               </div>
 
