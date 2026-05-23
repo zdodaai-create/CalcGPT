@@ -14,10 +14,14 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { AdContainer } from '@/components/AdContainer';
 import { CHEMISTRY_DATA } from '@/lib/chemistry-data';
+import { ALL_CALCULATORS } from '@/lib/calculator-registry';
 
 import { useTranslations } from 'next-intl';
 export default function ChemistryMegaCategoryPage() {
   const tCalc = useTranslations('Calculators');
+  const chemistryCount = useMemo(() => {
+    return ALL_CALCULATORS.filter(c => (c.category || '').toLowerCase() === 'chemistry').length;
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedCategories, setExpandedCategories] = useState<string[]>(CHEMISTRY_DATA.map(c => c.id));
@@ -60,7 +64,7 @@ export default function ChemistryMegaCategoryPage() {
                 </div>
                 <div>
                   <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Chemistry Calculators</h1>
-                  <p className="text-blue-600 font-bold mt-1">100+ specialized tools for chemical sciences</p>
+                  <p className="text-blue-600 font-bold mt-1">{chemistryCount} specialized tools for chemical sciences</p>
                 </div>
               </div>
               <p className="text-xl text-gray-500 font-medium leading-relaxed">
@@ -86,7 +90,7 @@ export default function ChemistryMegaCategoryPage() {
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Search across 100+ chemistry calculators..." 
+                placeholder={`Search across ${chemistryCount}+ chemistry calculators...`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-14 bg-gray-50/50 border-0 rounded-2xl pl-14 pr-6 focus:ring-2 focus:ring-blue-500/20 transition-all text-lg font-medium"

@@ -65,7 +65,10 @@ const CATEGORIES_BASE = [
 
 const CATEGORIES = CATEGORIES_BASE.map(cat => {
   const count = cat.id === 'other'
-    ? ALL_CALCULATORS.filter(c => !CATEGORIES_BASE.some(b => b.id === (c.category || '').toLowerCase().replace(' ', '-'))).length
+    ? ALL_CALCULATORS.filter(c => 
+        (c.category || '').toLowerCase() === 'other' ||
+        !CATEGORIES_BASE.some(b => b.id === (c.category || '').toLowerCase().replace(' ', '-'))
+      ).length
     : ALL_CALCULATORS.filter(c => (c.category || '').toLowerCase() === cat.title.toLowerCase() || (c.category || '').toLowerCase() === cat.id).length;
   
   return { ...cat, count: count || 0 };

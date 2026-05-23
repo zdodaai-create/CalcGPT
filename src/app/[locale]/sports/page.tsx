@@ -14,10 +14,14 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { AdContainer } from '@/components/AdContainer';
 import { SPORTS_DATA } from '@/lib/sports-data';
+import { ALL_CALCULATORS } from '@/lib/calculator-registry';
 
 import { useTranslations } from 'next-intl';
 export default function SportsMegaCategoryPage() {
   const tCalc = useTranslations('Calculators');
+  const sportsCount = useMemo(() => {
+    return ALL_CALCULATORS.filter(c => (c.category || '').toLowerCase() === 'sports').length;
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedCategories, setExpandedCategories] = useState<string[]>(SPORTS_DATA.map(c => c.id));
@@ -60,7 +64,7 @@ export default function SportsMegaCategoryPage() {
                 </div>
                 <div>
                   <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Sports Calculators</h1>
-                  <p className="text-emerald-600 font-bold mt-1">104 specialized tools for sports and athletic performance</p>
+                  <p className="text-emerald-600 font-bold mt-1">{sportsCount} specialized tools for sports and athletic performance</p>
                 </div>
               </div>
               <p className="text-xl text-gray-500 font-medium leading-relaxed">
@@ -86,7 +90,7 @@ export default function SportsMegaCategoryPage() {
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Search across 100+ sports calculators..." 
+                placeholder={`Search across ${sportsCount} sports calculators...`} 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-14 bg-gray-50/50 border-0 rounded-2xl pl-14 pr-6 focus:ring-2 focus:ring-emerald-500/20 transition-all text-lg font-medium"

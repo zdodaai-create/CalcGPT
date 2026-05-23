@@ -14,10 +14,22 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { AdContainer } from '@/components/AdContainer';
 import { OTHER_DATA } from '@/lib/other-data';
+import { ALL_CALCULATORS } from '@/lib/calculator-registry';
 
 import { useTranslations } from 'next-intl';
 export default function OtherMegaCategoryPage() {
   const tCalc = useTranslations('Calculators');
+  const otherCount = useMemo(() => {
+    const mainCategoryIds = [
+      'biology', 'chemistry', 'construction', 'conversion', 'ecology', 
+      'everyday-life', 'finance', 'food', 'health', 'math', 
+      'physics', 'sports', 'statistics', 'marketing', 'ecommerce'
+    ];
+    return ALL_CALCULATORS.filter(c => {
+      const catKey = (c.category || '').toLowerCase().replace(' ', '-');
+      return catKey === 'other' || !mainCategoryIds.includes(catKey);
+    }).length;
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedCategories, setExpandedCategories] = useState<string[]>(OTHER_DATA.map(c => c.id));
@@ -60,7 +72,7 @@ export default function OtherMegaCategoryPage() {
                 </div>
                 <div>
                   <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Other Calculators</h1>
-                  <p className="text-amber-600 font-bold mt-1">216 specialized tools for everything else</p>
+                  <p className="text-amber-600 font-bold mt-1">{otherCount} specialized tools for everything else</p>
                 </div>
               </div>
               <p className="text-xl text-gray-500 font-medium leading-relaxed">
@@ -86,7 +98,7 @@ export default function OtherMegaCategoryPage() {
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Search across 200+ random calculators..." 
+                placeholder={`Search across ${otherCount} other calculators...`} 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-14 bg-gray-50/50 border-0 rounded-2xl pl-14 pr-6 focus:ring-2 focus:ring-amber-500/20 transition-all text-lg font-medium"

@@ -60,6 +60,9 @@ import { MARKETING_BATCH4_A } from "./marketing-calculators-batch4-a";
 import { MARKETING_BATCH4_B } from "./marketing-calculators-batch4-b";
 import { ECOMMERCE_CALCULATORS_A } from "./ecommerce-calculators-a";
 import { ECOMMERCE_CALCULATORS_B } from "./ecommerce-calculators-b";
+import { ECOMMERCE_CALCULATORS_EXTENDED_C } from "./ecommerce-calculators-extended-c";
+import { ECOMMERCE_CALCULATORS_EXTENDED_D } from "./ecommerce-calculators-extended-d";
+
 
 export const CALCULATOR_REGISTRY: CalculatorConfig[] = [
   // Keeping this array empty or just for core uncategorized tools
@@ -182,6 +185,8 @@ export const ALL_CALCULATORS: CalculatorConfig[] = [
   ...MARKETING_BATCH4_B,
   ...ECOMMERCE_CALCULATORS_A,
   ...ECOMMERCE_CALCULATORS_B,
+  ...ECOMMERCE_CALCULATORS_EXTENDED_C,
+  ...ECOMMERCE_CALCULATORS_EXTENDED_D,
   ...OTHER_DATA.flatMap(sub => 
     sub.calculators
       .filter(calc => 

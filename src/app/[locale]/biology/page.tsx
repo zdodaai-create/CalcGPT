@@ -14,10 +14,14 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { AdContainer } from '@/components/AdContainer';
 import { BIOLOGY_DATA } from '@/lib/biology-data';
+import { ALL_CALCULATORS } from '@/lib/calculator-registry';
 
 import { useTranslations } from 'next-intl';
 export default function BiologyMegaCategoryPage() {
   const tCalc = useTranslations('Calculators');
+  const biologyCount = useMemo(() => {
+    return ALL_CALCULATORS.filter(c => (c.category || '').toLowerCase() === 'biology').length;
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedCategories, setExpandedCategories] = useState<string[]>(BIOLOGY_DATA.map(c => c.id));
@@ -70,7 +74,7 @@ export default function BiologyMegaCategoryPage() {
                 </div>
                 <div>
                   <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Biology Calculators</h1>
-                  <p className="text-blue-600 font-bold mt-1">112 specialized tools for biological sciences</p>
+                  <p className="text-blue-600 font-bold mt-1">{biologyCount} specialized tools for biological sciences</p>
                 </div>
               </div>
               <p className="text-xl text-gray-500 font-medium leading-relaxed">
@@ -96,7 +100,7 @@ export default function BiologyMegaCategoryPage() {
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Search across 100+ biology calculators..." 
+                placeholder={`Search across ${biologyCount}+ biology calculators...`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-14 bg-gray-50/50 border-0 rounded-2xl pl-14 pr-6 focus:ring-2 focus:ring-blue-500/20 transition-all text-lg font-medium"
