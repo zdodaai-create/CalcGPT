@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, 
   ChevronRight, 
@@ -31,9 +31,11 @@ import {
   Home,
   Apple,
   Megaphone,
-  ShoppingCart
+  ShoppingCart,
+  X
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { AdContainer } from '@/components/AdContainer';
 import { CategoryCard } from '@/components/CategoryCard';
 import { CategorySkeleton } from '@/components/CategorySkeleton';
@@ -68,8 +70,40 @@ const CATEGORIES = CATEGORIES_BASE.map(cat => {
   return { ...cat, count: count || 0 };
 });
 
+// Category color map for search results
+const CATEGORY_COLORS: Record<string, string> = {
+  biology: 'bg-green-500',
+  chemistry: 'bg-blue-400',
+  construction: 'bg-orange-500',
+  conversion: 'bg-purple-500',
+  ecology: 'bg-emerald-600',
+  'everyday life': 'bg-pink-500',
+  'everyday-life': 'bg-pink-500',
+  finance: 'bg-indigo-600',
+  food: 'bg-red-500',
+  health: 'bg-rose-500',
+  math: 'bg-blue-600',
+  physics: 'bg-violet-600',
+  sports: 'bg-emerald-500',
+  statistics: 'bg-slate-600',
+  marketing: 'bg-purple-500',
+  ecommerce: 'bg-green-600',
+  other: 'bg-amber-600',
+};
+
+function getCategoryColor(category: string) {
+  const key = (category || '').toLowerCase();
+  return CATEGORY_COLORS[key] || 'bg-gray-500';
+}
+
 export default function HomePage() {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const t = useTranslations('Home');
   const tNav = useTranslations('Navbar');
   const { loginWithGoogle } = useAuth();
@@ -78,6 +112,62 @@ export default function HomePage() {
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
+
+  // Search results from ALL calculators
+  const searchResults = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return [];
+    return ALL_CALCULATORS.filter(calc =>
+      (calc.name || '').toLowerCase().includes(query) ||
+      (calc.category || '').toLowerCase().includes(query) ||
+      (calc.description || '').toLowerCase().includes(query)
+    ).slice(0, 8);
+  }, [searchQuery]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  // Reset selected index when results change
+  useEffect(() => {
+    setSelectedIndex(-1);
+  }, [searchResults]);
+
+  const handleResultClick = (id: string) => {
+    setShowDropdown(false);
+    setSearchQuery("");
+    router.push(`/calculator/${id}`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!showDropdown || searchResults.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex(prev => (prev < searchResults.length - 1 ? prev + 1 : 0));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex(prev => (prev > 0 ? prev - 1 : searchResults.length - 1));
+    } else if (e.key === 'Enter' && selectedIndex >= 0) {
+      e.preventDefault();
+      handleResultClick(searchResults[selectedIndex].id);
+    } else if (e.key === 'Escape') {
+      setShowDropdown(false);
+    }
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setShowDropdown(false);
+    inputRef.current?.focus();
+  };
 
   return (
     <div className="min-h-screen bg-[#F8F9FA]">
@@ -99,14 +189,88 @@ export default function HomePage() {
           {t('heroSubtitle')}
         </p>
         
-        {/* Mobile Search - Only visible on small screens since Navbar has it on desktop */}
-        <div className="md:hidden relative max-w-md mx-auto mb-10">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+        {/* Global Search Bar */}
+        <div className="relative max-w-2xl mx-auto mb-10" ref={searchRef}>
+          <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 z-10" />
           <input 
+            ref={inputRef}
             type="text" 
-            placeholder={tNav('search')} 
-            className="w-full h-14 bg-white border border-gray-200 rounded-full pl-12 pr-4 shadow-xl focus:outline-none"
+            placeholder={`Search ${ALL_CALCULATORS.length}+ calculators...`}
+            value={searchQuery}
+            onChange={(e) => { setSearchQuery(e.target.value); setShowDropdown(true); }}
+            onFocus={() => searchQuery && setShowDropdown(true)}
+            onKeyDown={handleKeyDown}
+            className="w-full h-14 md:h-16 bg-white border border-gray-200 rounded-full pl-14 pr-12 shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all text-lg font-medium"
           />
+          {searchQuery && (
+            <button
+              onClick={clearSearch}
+              className="absolute right-5 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-100 transition-colors z-10"
+            >
+              <X className="w-4 h-4 text-gray-400" />
+            </button>
+          )}
+
+          {/* Live Search Dropdown */}
+          <AnimatePresence>
+            {showDropdown && searchResults.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                transition={{ duration: 0.15 }}
+                className="absolute top-full left-0 right-0 mt-3 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50 text-left"
+              >
+                <div className="p-2">
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wider px-4 py-2">
+                    {searchResults.length} result{searchResults.length !== 1 ? 's' : ''}
+                  </p>
+                  {searchResults.map((calc, i) => (
+                    <button
+                      key={calc.id}
+                      onClick={() => handleResultClick(calc.id)}
+                      onMouseEnter={() => setSelectedIndex(i)}
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors group text-left ${
+                        selectedIndex === i ? 'bg-blue-50' : 'hover:bg-gray-50'
+                      }`}
+                    >
+                      <div className={`w-9 h-9 rounded-lg ${getCategoryColor(calc.category || '')} flex items-center justify-center shrink-0`}>
+                        <Calculator className="w-4 h-4 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className={`font-bold text-[0.95rem] truncate transition-colors ${
+                          selectedIndex === i ? 'text-blue-700' : 'text-gray-800 group-hover:text-blue-600'
+                        }`}>
+                          {calc.name}
+                        </p>
+                        <p className="text-xs text-gray-400 truncate">{calc.category}</p>
+                      </div>
+                      <ChevronRight className={`w-4 h-4 shrink-0 transition-colors ${
+                        selectedIndex === i ? 'text-blue-500' : 'text-gray-300 group-hover:text-blue-400'
+                      }`} />
+                    </button>
+                  ))}
+                </div>
+                <div className="border-t border-gray-50 px-4 py-3 bg-gray-50/50">
+                  <p className="text-xs text-gray-400 text-center">
+                    Use <kbd className="px-1.5 py-0.5 bg-white rounded border text-[10px] font-mono">↑↓</kbd> to navigate, <kbd className="px-1.5 py-0.5 bg-white rounded border text-[10px] font-mono">Enter</kbd> to select
+                  </p>
+                </div>
+              </motion.div>
+            )}
+
+            {showDropdown && searchQuery.trim() && searchResults.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="absolute top-full left-0 right-0 mt-3 bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 z-50 text-center"
+              >
+                <p className="text-gray-400 font-medium">No calculators found for &quot;{searchQuery}&quot;</p>
+                <p className="text-sm text-gray-300 mt-1">Try a different keyword like &quot;profit&quot;, &quot;BMI&quot;, or &quot;loan&quot;</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
