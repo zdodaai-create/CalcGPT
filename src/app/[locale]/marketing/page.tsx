@@ -64,7 +64,7 @@ export default function MarketingMegaCategoryPage() {
                 </div>
                 <div>
                   <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Marketing Calculators</h1>
-                  <p className="text-purple-600 font-bold mt-1">100 specialized tools for marketers and businesses</p>
+                  <p className="text-purple-600 font-bold mt-1">150 specialized tools for marketers and businesses</p>
                 </div>
               </div>
               <p className="text-xl text-gray-500 font-medium leading-relaxed">
@@ -90,7 +90,7 @@ export default function MarketingMegaCategoryPage() {
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Search across 100 marketing calculators..." 
+                placeholder="Search across 150 marketing calculators..." 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-14 bg-gray-50/50 border-0 rounded-2xl pl-14 pr-6 focus:ring-2 focus:ring-purple-500/20 transition-all text-lg font-medium"

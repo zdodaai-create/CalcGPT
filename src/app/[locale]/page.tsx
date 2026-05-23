@@ -53,7 +53,7 @@ const CATEGORIES = [
   { id: 'physics', title: 'Physics', count: 495, color: 'text-violet-600', href: '/physics', Icon: Atom },
   { id: 'sports', title: 'Sports', count: 104, color: 'text-emerald-500', href: '/sports', Icon: Trophy },
   { id: 'statistics', title: 'Statistics', count: 156, color: 'text-slate-600', href: '/statistics', Icon: BarChart2 },
-  { id: 'marketing', title: 'Marketing', count: 100, color: 'text-purple-500', href: '/marketing', Icon: Megaphone },
+  { id: 'marketing', title: 'Marketing', count: 150, color: 'text-purple-500', href: '/marketing', Icon: Megaphone },
   { id: 'other', title: 'Other', count: 200, color: 'text-amber-600', href: '/other', Icon: Shapes },
 ];
 

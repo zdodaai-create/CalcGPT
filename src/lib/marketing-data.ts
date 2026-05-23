@@ -28,7 +28,13 @@ export const MARKETING_DATA = [
       { name: 'Cost Per Engagement Calculator', slug: 'cost-per-engagement-calculator' },
       { name: 'Impression Share Calculator', slug: 'impression-share-calculator' },
       { name: 'App Install Cost Calculator', slug: 'app-install-cost-calculator' },
-      { name: 'Mobile Ad Revenue Calculator', slug: 'mobile-ad-revenue-calculator' }
+      { name: 'Mobile Ad Revenue Calculator', slug: 'mobile-ad-revenue-calculator' },
+      { name: 'Google Ads Budget Calculator', slug: 'google-ads-budget-calculator' },
+      { name: 'Ad Click Probability Calculator', slug: 'ad-click-probability-calculator' },
+      { name: 'Ad Viewability Calculator', slug: 'ad-viewability-calculator' },
+      { name: 'Advertising Frequency Calculator', slug: 'advertising-frequency-calculator' },
+      { name: 'Digital Ad Cost Calculator', slug: 'digital-ad-cost-calculator' },
+      { name: 'Ad Revenue Per Click Calculator', slug: 'ad-revenue-per-click-calculator' }
     ]
   },
   {
@@ -55,7 +61,15 @@ export const MARKETING_DATA = [
       { name: 'Email Bounce Rate Calculator', slug: 'email-bounce-rate-calculator' },
       { name: 'Unsubscribe Rate Calculator', slug: 'unsubscribe-rate-calculator' },
       { name: 'Subscriber Growth Calculator', slug: 'subscriber-growth-calculator' },
-      { name: 'Conversion Funnel Leakage Calculator', slug: 'conversion-funnel-leakage-calculator' }
+      { name: 'Conversion Funnel Leakage Calculator', slug: 'conversion-funnel-leakage-calculator' },
+      { name: 'Product Conversion Calculator', slug: 'product-conversion-calculator' },
+      { name: 'Website Engagement Calculator', slug: 'website-engagement-calculator' },
+      { name: 'Landing Page Bounce Calculator', slug: 'landing-page-bounce-calculator' },
+      { name: 'Mobile Conversion Rate Calculator', slug: 'mobile-conversion-rate-calculator' },
+      { name: 'Push Notification CTR Calculator', slug: 'push-notification-ctr-calculator' },
+      { name: 'Conversion Lift Calculator', slug: 'conversion-lift-calculator' },
+      { name: 'Shopping Cart Value Calculator', slug: 'shopping-cart-value-calculator' },
+      { name: 'Multi-Step Funnel Calculator', slug: 'multi-step-funnel-calculator' }
     ]
   },
   {
@@ -84,7 +98,16 @@ export const MARKETING_DATA = [
       { name: 'Ad Placement ROI Calculator', slug: 'ad-placement-roi-calculator' },
       { name: 'Sales Commission Calculator', slug: 'sales-commission-calculator' },
       { name: 'Marketing Efficiency Ratio Calculator', slug: 'marketing-efficiency-ratio-calculator' },
-      { name: 'Geo-targeting ROI Calculator', slug: 'geo-targeting-roi-calculator' }
+      { name: 'Geo-targeting ROI Calculator', slug: 'geo-targeting-roi-calculator' },
+      { name: 'Campaign ROI Forecast Calculator', slug: 'campaign-roi-forecast-calculator' },
+      { name: 'Affiliate Revenue Calculator', slug: 'affiliate-revenue-calculator' },
+      { name: 'Email Campaign ROI Calculator', slug: 'email-campaign-roi-calculator' },
+      { name: 'Loyalty Program ROI Calculator', slug: 'loyalty-program-roi-calculator' },
+      { name: 'Seasonal Sales Forecast Calculator', slug: 'seasonal-sales-forecast-calculator' },
+      { name: 'Product Recommendation ROI Calculator', slug: 'product-recommendation-roi-calculator' },
+      { name: 'Marketing Automation ROI Calculator', slug: 'marketing-automation-roi-calculator' },
+      { name: 'Sales Opportunity Calculator', slug: 'sales-opportunity-calculator' },
+      { name: 'Traffic Source ROI Calculator', slug: 'traffic-source-roi-calculator' }
     ]
   },
   {
@@ -108,7 +131,15 @@ export const MARKETING_DATA = [
       { name: 'Customer Segmentation Calculator', slug: 'customer-segmentation-calculator' },
       { name: 'Brand Recall Calculator', slug: 'brand-recall-calculator' },
       { name: 'Brand Sentiment Calculator', slug: 'brand-sentiment-calculator' },
-      { name: 'Customer Journey Calculator', slug: 'customer-journey-calculator' }
+      { name: 'Customer Journey Calculator', slug: 'customer-journey-calculator' },
+      { name: 'Customer Persona Calculator', slug: 'customer-persona-calculator' },
+      { name: 'Brand Consistency Calculator', slug: 'brand-consistency-calculator' },
+      { name: 'Customer Reactivation Calculator', slug: 'customer-reactivation-calculator' },
+      { name: 'Product Popularity Calculator', slug: 'product-popularity-calculator' },
+      { name: 'Customer Retention Value Calculator', slug: 'customer-retention-value-calculator' },
+      { name: 'Brand Trust Score Calculator', slug: 'brand-trust-score-calculator' },
+      { name: 'Customer Win-back Calculator', slug: 'customer-win-back-calculator' },
+      { name: 'Customer Intent Score Calculator', slug: 'customer-intent-score-calculator' }
     ]
   },
   {
@@ -135,7 +166,20 @@ export const MARKETING_DATA = [
       { name: 'Store Footfall Calculator', slug: 'store-footfall-calculator' },
       { name: 'E-commerce Revenue Calculator', slug: 'ecommerce-revenue-calculator' },
       { name: 'Upsell Revenue Calculator', slug: 'upsell-revenue-calculator' },
-      { name: 'Cross-sell Revenue Calculator', slug: 'cross-sell-revenue-calculator' }
+      { name: 'Cross-sell Revenue Calculator', slug: 'cross-sell-revenue-calculator' },
+      { name: 'Competitor Analysis Calculator', slug: 'competitor-analysis-calculator' },
+      { name: 'Dynamic Pricing Calculator', slug: 'dynamic-pricing-calculator' },
+      { name: 'Digital Marketing Score Calculator', slug: 'digital-marketing-score-calculator' },
+      { name: 'Viral Marketing Reach Calculator', slug: 'viral-marketing-reach-calculator' },
+      { name: 'Search Volume Calculator', slug: 'search-volume-calculator' },
+      { name: 'Market Penetration Calculator', slug: 'market-penetration-calculator' },
+      { name: 'Multi-Channel Attribution Calculator', slug: 'multi-channel-attribution-calculator' },
+      { name: 'Ecommerce Growth Calculator', slug: 'ecommerce-growth-calculator' },
+      { name: 'Competitor Pricing Calculator', slug: 'competitor-pricing-calculator' },
+      { name: 'Search Ranking Value Calculator', slug: 'search-ranking-value-calculator' },
+      { name: 'Marketing KPI Calculator', slug: 'marketing-kpi-calculator' },
+      { name: 'Marketing Productivity Calculator', slug: 'marketing-productivity-calculator' },
+      { name: 'Brand Growth Calculator', slug: 'brand-growth-calculator' }
     ]
   },
   {
@@ -152,7 +196,13 @@ export const MARKETING_DATA = [
       { name: 'Facebook Ad ROI Calculator', slug: 'facebook-ad-roi-calculator' },
       { name: 'LinkedIn Campaign Calculator', slug: 'linkedin-campaign-calculator' },
       { name: 'Pinterest Traffic Calculator', slug: 'pinterest-traffic-calculator' },
-      { name: 'Twitter Engagement Rate Calculator', slug: 'twitter-engagement-rate-calculator' }
+      { name: 'Twitter Engagement Rate Calculator', slug: 'twitter-engagement-rate-calculator' },
+      { name: 'Meta Ads Performance Calculator', slug: 'meta-ads-performance-calculator' },
+      { name: 'Social Share Rate Calculator', slug: 'social-share-rate-calculator' },
+      { name: 'Influencer Campaign Reach Calculator', slug: 'influencer-campaign-reach-calculator' },
+      { name: 'Audience Retention Calculator', slug: 'audience-retention-calculator' },
+      { name: 'Engagement-to-Sales Calculator', slug: 'engagement-to-sales-calculator' },
+      { name: 'Video Watch Time Calculator', slug: 'video-watch-time-calculator' }
     ]
   }
 ];
