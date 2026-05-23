@@ -48,6 +48,10 @@ import { OTHER_CALCULATORS_GAMES } from "./other-calculators-games";
 import { OTHER_CALCULATORS_LOGISTICS } from "./other-calculators-logistics";
 import { OTHER_CALCULATORS_EARTH_SEASONS } from "./other-calculators-earth-seasons";
 import { OTHER_CALCULATORS_MISC } from "./other-calculators-misc";
+import { MARKETING_CALCULATORS_ADS } from "./marketing-calculators-ads";
+import { MARKETING_CALCULATORS_CONVERSION } from "./marketing-calculators-conversion";
+import { MARKETING_CALCULATORS_ROI } from "./marketing-calculators-roi";
+import { MARKETING_CALCULATORS_CUSTOMER } from "./marketing-calculators-customer";
 
 export const CALCULATOR_REGISTRY: CalculatorConfig[] = [
   // Keeping this array empty or just for core uncategorized tools
@@ -158,6 +162,10 @@ export const ALL_CALCULATORS: CalculatorConfig[] = [
   ...OTHER_CALCULATORS_LOGISTICS,
   ...OTHER_CALCULATORS_EARTH_SEASONS,
   ...OTHER_CALCULATORS_MISC,
+  ...MARKETING_CALCULATORS_ADS,
+  ...MARKETING_CALCULATORS_CONVERSION,
+  ...MARKETING_CALCULATORS_ROI,
+  ...MARKETING_CALCULATORS_CUSTOMER,
   ...OTHER_DATA.flatMap(sub => 
     sub.calculators
       .filter(calc => 
