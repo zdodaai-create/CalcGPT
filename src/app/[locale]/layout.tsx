@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { AIAssistant } from "@/components/ai/AIAssistant";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AuthProvider } from "@/components/AuthProvider";
@@ -84,7 +83,6 @@ export default async function RootLayout({
                 {children}
               </main>
               <Footer />
-              <AIAssistant />
             </AuthProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
