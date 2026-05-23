@@ -11,7 +11,25 @@ import {
   Flame,
   TrendingUp,
   Info,
-  ArrowRight
+  ArrowRight,
+  Dna,
+  FlaskConical,
+  HardHat,
+  ArrowRightLeft,
+  Sprout,
+  Coffee,
+  Wallet,
+  Utensils,
+  HeartPulse,
+  Sigma,
+  Atom,
+  Trophy,
+  BarChart2,
+  Shapes,
+  Activity,
+  PiggyBank,
+  Home,
+  Apple
 } from 'lucide-react';
 import Link from 'next/link';
 import { AdContainer } from '@/components/AdContainer';
@@ -20,20 +38,20 @@ import { CategorySkeleton } from '@/components/CategorySkeleton';
 import { useTranslations } from 'next-intl';
 
 const CATEGORIES = [
-  { id: 'biology', title: 'Biology', count: 106, color: 'text-green-500', href: '/biology' },
-  { id: 'chemistry', title: 'Chemistry', count: 107, color: 'text-blue-400', href: '/chemistry' },
-  { id: 'construction', title: 'Construction', count: 35, color: 'text-orange-500', href: '/construction' },
-  { id: 'conversion', title: 'Conversion', count: 42, color: 'text-purple-500', href: '/conversion' },
-  { id: 'ecology', title: 'Ecology', count: 28, color: 'text-emerald-600', href: '/ecology' },
-  { id: 'everyday-life', title: 'Everyday Life', count: 37, color: 'text-pink-500', href: '/everyday-life' },
-  { id: 'finance', title: 'Finance', count: 45, color: 'text-indigo-600', href: '/finance' },
-  { id: 'food', title: 'Food', count: 46, color: 'text-red-500', href: '/food' },
-  { id: 'health', title: 'Health', count: 528, color: 'text-rose-500', href: '/health' },
-  { id: 'math', title: 'Math', count: 413, color: 'text-blue-600', href: '/math' },
-  { id: 'physics', title: 'Physics', count: 495, color: 'text-violet-600', href: '/physics' },
-  { id: 'sports', title: 'Sports', count: 104, color: 'text-emerald-500', href: '/sports' },
-  { id: 'statistics', title: 'Statistics', count: 156, color: 'text-slate-600', href: '/statistics' },
-  { id: 'other', title: 'Other', count: 200, color: 'text-amber-600', href: '/other' },
+  { id: 'biology', title: 'Biology', count: 106, color: 'text-green-500', href: '/biology', Icon: Dna },
+  { id: 'chemistry', title: 'Chemistry', count: 107, color: 'text-blue-400', href: '/chemistry', Icon: FlaskConical },
+  { id: 'construction', title: 'Construction', count: 35, color: 'text-orange-500', href: '/construction', Icon: HardHat },
+  { id: 'conversion', title: 'Conversion', count: 42, color: 'text-purple-500', href: '/conversion', Icon: ArrowRightLeft },
+  { id: 'ecology', title: 'Ecology', count: 28, color: 'text-emerald-600', href: '/ecology', Icon: Sprout },
+  { id: 'everyday-life', title: 'Everyday Life', count: 37, color: 'text-pink-500', href: '/everyday-life', Icon: Coffee },
+  { id: 'finance', title: 'Finance', count: 45, color: 'text-indigo-600', href: '/finance', Icon: Wallet },
+  { id: 'food', title: 'Food', count: 46, color: 'text-red-500', href: '/food', Icon: Utensils },
+  { id: 'health', title: 'Health', count: 528, color: 'text-rose-500', href: '/health', Icon: HeartPulse },
+  { id: 'math', title: 'Math', count: 413, color: 'text-blue-600', href: '/math', Icon: Sigma },
+  { id: 'physics', title: 'Physics', count: 495, color: 'text-violet-600', href: '/physics', Icon: Atom },
+  { id: 'sports', title: 'Sports', count: 104, color: 'text-emerald-500', href: '/sports', Icon: Trophy },
+  { id: 'statistics', title: 'Statistics', count: 156, color: 'text-slate-600', href: '/statistics', Icon: BarChart2 },
+  { id: 'other', title: 'Other', count: 200, color: 'text-amber-600', href: '/other', Icon: Shapes },
 ];
 
 export default function HomePage() {
@@ -92,19 +110,19 @@ export default function HomePage() {
           
           <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-2 px-2">
             {[
-              { name: 'BMI Calculator', icon: '⚖️', category: 'Health' },
-              { name: 'Compound Interest', icon: '💰', category: 'Finance' },
-              { name: 'Loan Payment', icon: '🏠', category: 'Finance' },
-              { name: 'Calorie Deficit', icon: '🍎', category: 'Health' },
-              { name: 'Concrete Estimator', icon: '🧱', category: 'Construction' }
+              { name: 'BMI Calculator', icon: Activity, category: 'Health' },
+              { name: 'Compound Interest', icon: PiggyBank, category: 'Finance' },
+              { name: 'Loan Payment', icon: Home, category: 'Finance' },
+              { name: 'Calorie Deficit', icon: Apple, category: 'Health' },
+              { name: 'Concrete Estimator', icon: HardHat, category: 'Construction' }
             ].map((calc, i) => (
               <motion.div 
                 key={i}
                 whileHover={{ y: -8, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
                 className="min-w-[200px] md:min-w-[240px] bg-gray-50/50 p-5 md:p-6 rounded-3xl border border-gray-100 flex items-center gap-3 md:gap-4 cursor-pointer hover:bg-white transition-all shrink-0"
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-xl md:text-2xl shrink-0">
-                  {calc.icon}
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-blue-600 shrink-0">
+                  <calc.icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
                   <div className="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">{calc.category}</div>
@@ -151,7 +169,7 @@ export default function HomePage() {
                 <CategoryCard 
                   title={cat.title}
                   count={cat.count}
-                  icon={<Calculator className={`w-5 h-5 md:w-6 md:h-6 ${cat.color}`} />}
+                  icon={<cat.Icon className={`w-5 h-5 md:w-6 md:h-6 ${cat.color}`} />}
                   href={(cat as any).href || `/category/${cat.id}`}
                 />
               </motion.div>
