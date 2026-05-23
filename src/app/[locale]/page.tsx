@@ -38,23 +38,33 @@ import { CategoryCard } from '@/components/CategoryCard';
 import { CategorySkeleton } from '@/components/CategorySkeleton';
 import { useTranslations } from 'next-intl';
 import { useAuth } from '@/components/AuthProvider';
+import { ALL_CALCULATORS } from '@/lib/calculator-registry';
 
-const CATEGORIES = [
-  { id: 'biology', title: 'Biology', count: 106, color: 'text-green-500', href: '/biology', Icon: Dna },
-  { id: 'chemistry', title: 'Chemistry', count: 107, color: 'text-blue-400', href: '/chemistry', Icon: FlaskConical },
-  { id: 'construction', title: 'Construction', count: 35, color: 'text-orange-500', href: '/construction', Icon: HardHat },
-  { id: 'conversion', title: 'Conversion', count: 42, color: 'text-purple-500', href: '/conversion', Icon: ArrowRightLeft },
-  { id: 'ecology', title: 'Ecology', count: 28, color: 'text-emerald-600', href: '/ecology', Icon: Sprout },
-  { id: 'everyday-life', title: 'Everyday Life', count: 37, color: 'text-pink-500', href: '/everyday-life', Icon: Coffee },
-  { id: 'finance', title: 'Finance', count: 45, color: 'text-indigo-600', href: '/finance', Icon: Wallet },
-  { id: 'food', title: 'Food', count: 46, color: 'text-red-500', href: '/food', Icon: Utensils },
-  { id: 'health', title: 'Health', count: 528, color: 'text-rose-500', href: '/health', Icon: HeartPulse },
-  { id: 'math', title: 'Math', count: 413, color: 'text-blue-600', href: '/math', Icon: Sigma },
-  { id: 'physics', title: 'Physics', count: 495, color: 'text-violet-600', href: '/physics', Icon: Atom },
-  { id: 'sports', title: 'Sports', count: 104, color: 'text-emerald-500', href: '/sports', Icon: Trophy },
-  { id: 'statistics', title: 'Statistics', count: 156, color: 'text-slate-600', href: '/statistics', Icon: BarChart2 },
-  { id: 'marketing', title: 'Marketing', count: 150, color: 'text-purple-500', href: '/marketing', Icon: Megaphone },
-  { id: 'other', title: 'Other', count: 200, color: 'text-amber-600', href: '/other', Icon: Shapes },
+const CATEGORIES_BASE = [
+  { id: 'biology', title: 'Biology', color: 'text-green-500', href: '/biology', Icon: Dna },
+  { id: 'chemistry', title: 'Chemistry', color: 'text-blue-400', href: '/chemistry', Icon: FlaskConical },
+  { id: 'construction', title: 'Construction', color: 'text-orange-500', href: '/construction', Icon: HardHat },
+  { id: 'conversion', title: 'Conversion', color: 'text-purple-500', href: '/conversion', Icon: ArrowRightLeft },
+  { id: 'ecology', title: 'Ecology', color: 'text-emerald-600', href: '/ecology', Icon: Sprout },
+  { id: 'everyday-life', title: 'Everyday Life', color: 'text-pink-500', href: '/everyday-life', Icon: Coffee },
+  { id: 'finance', title: 'Finance', color: 'text-indigo-600', href: '/finance', Icon: Wallet },
+  { id: 'food', title: 'Food', color: 'text-red-500', href: '/food', Icon: Utensils },
+  { id: 'health', title: 'Health', color: 'text-rose-500', href: '/health', Icon: HeartPulse },
+  { id: 'math', title: 'Math', color: 'text-blue-600', href: '/math', Icon: Sigma },
+  { id: 'physics', title: 'Physics', color: 'text-violet-600', href: '/physics', Icon: Atom },
+  { id: 'sports', title: 'Sports', color: 'text-emerald-500', href: '/sports', Icon: Trophy },
+  { id: 'statistics', title: 'Statistics', color: 'text-slate-600', href: '/statistics', Icon: BarChart2 },
+  { id: 'marketing', title: 'Marketing', color: 'text-purple-500', href: '/marketing', Icon: Megaphone },
+  { id: 'other', title: 'Other', color: 'text-amber-600', href: '/other', Icon: Shapes },
+];
+
+const CATEGORIES = CATEGORIES_BASE.map(cat => {
+  const count = cat.id === 'other'
+    ? ALL_CALCULATORS.filter(c => !CATEGORIES_BASE.some(b => b.id === (c.category || '').toLowerCase().replace(' ', '-'))).length
+    : ALL_CALCULATORS.filter(c => (c.category || '').toLowerCase() === cat.title.toLowerCase() || (c.category || '').toLowerCase() === cat.id).length;
+  
+  return { ...cat, count: count || 0 };
+});
 ];
 
 export default function HomePage() {
@@ -82,7 +92,7 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 md:mb-8"
         >
-          {t('heroTitle')}
+          {t('heroTitle', { count: ALL_CALCULATORS.length })}
         </motion.h1>
         <p className="text-lg sm:text-xl text-gray-500 mb-10 md:mb-12 max-w-2xl mx-auto font-medium px-2">
           {t('heroSubtitle')}
