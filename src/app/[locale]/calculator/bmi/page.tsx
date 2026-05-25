@@ -6,6 +6,7 @@ const bmiSchema: CalculatorSchema = {
   id: "bmi",
   name: "Body Mass Index (BMI) Calculator",
   description: "Calculate your BMI and determine your weight category based on your height and weight.",
+  category: "health",
   inputs: [
     {
       id: "weight",

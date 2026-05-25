@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Sparkles, Calculator as CalculatorIcon, Info } from "lucide-react";
 import { motion } from "framer-motion";
+import { saveRecentCalculator } from "@/lib/recent-calculators";
 
 export type InputField = {
   id: string;
@@ -37,11 +38,19 @@ export type CalculatorSchema = {
   id: string;
   name: string;
   description: string;
+  category?: string;
   inputs: InputField[];
   outputs: OutputField[];
 };
 
 export function CalculatorEngine({ schema }: { schema: CalculatorSchema }) {
+  useEffect(() => {
+    saveRecentCalculator({
+      id: schema.id,
+      name: schema.name,
+      category: schema.category || 'Science/Math'
+    });
+  }, [schema.id, schema.name, schema.category]);
   // Generate Zod schema dynamically based on inputs
   const formSchema = useMemo(() => {
     const shape: Record<string, z.ZodTypeAny> = {};

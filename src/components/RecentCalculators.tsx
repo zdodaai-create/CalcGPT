@@ -36,7 +36,8 @@ export function RecentCalculators() {
     return null; // SSR safety
   }
 
-  const getCategoryIcon = (category: string) => {
+  const getCategoryIcon = (category?: string) => {
+    if (!category) return Shapes;
     const cat = category.toLowerCase();
     if (cat.includes('health') || cat.includes('medical') || cat.includes('fitness')) return HeartPulse;
     if (cat.includes('finance') || cat.includes('money') || cat.includes('tax')) return DollarSign;
@@ -91,7 +92,7 @@ export function RecentCalculators() {
                         <IconComponent className="w-5 h-5" />
                       </div>
                       <div className="flex-1 min-w-0 flex flex-col justify-center">
-                        <div className="text-[9px] font-extrabold text-blue-500 uppercase tracking-widest mb-0.5 truncate">{calc.category}</div>
+                        <div className="text-[9px] font-extrabold text-blue-500 uppercase tracking-widest mb-0.5 truncate">{calc.category || 'Tool'}</div>
                         <div className="text-sm font-bold text-gray-900 leading-tight truncate group-hover:text-blue-600 transition-colors">{calc.name}</div>
                       </div>
                     </div>
