@@ -6,7 +6,7 @@ export interface RecentCalculator {
 }
 
 const RECENT_KEY = 'recent_calculators';
-const MAX_RECENT = 8;
+const MAX_RECENT = 10;
 
 export function recordCalculatorVisit(calculator: { id: string; name: string; category: string }) {
   if (typeof window === 'undefined') return;

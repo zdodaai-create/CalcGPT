@@ -116,19 +116,7 @@ export default function HomePage() {
   const [recentCalculators, setRecentCalculators] = useState<any[]>([]);
 
   useEffect(() => {
-    const list = getRecentCalculators();
-    if (list.length > 0) {
-      setRecentCalculators(list);
-    } else {
-      // Fallback defaults when history is empty
-      setRecentCalculators([
-        { id: 'bmi-calculator', name: 'BMI Calculator', category: 'Health' },
-        { id: 'compound-interest-calculator', name: 'Compound Interest', category: 'Finance' },
-        { id: 'loan-calculator', name: 'Loan Payment', category: 'Finance' },
-        { id: 'calorie-deficit-calculator', name: 'Calorie Deficit', category: 'Health' },
-        { id: 'concrete-calculator', name: 'Concrete Estimator', category: 'Construction' }
-      ]);
-    }
+    setRecentCalculators(getRecentCalculators());
   }, []);
 
   const getCategoryIcon = (category: string) => {
@@ -222,38 +210,57 @@ export default function HomePage() {
 
       {/* Last Used Section */}
       <section className="max-w-[1400px] mx-auto px-4 mb-16 md:mb-20">
-        <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-sm border border-gray-100 relative overflow-hidden group">
+        <div className="bg-white/80 backdrop-blur-xl rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-sm border border-white/60 relative overflow-hidden group">
           <div className="flex items-center justify-between mb-6 md:mb-8">
             <h2 className="text-xl md:text-2xl font-bold flex items-center gap-3 text-gray-900">
               <History className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
               {t('lastUsed')}
             </h2>
-            <button className="p-2 md:p-3 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors">
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-400" />
-            </button>
+            {recentCalculators.length > 0 && (
+              <button className="p-2 md:p-3 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors">
+                <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-400" />
+              </button>
+            )}
           </div>
           
-          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide -mx-2 px-2">
-            {recentCalculators.map((calc, i) => {
-              const IconComponent = getCategoryIcon(calc.category);
-              return (
-                <Link key={calc.id || i} href={`/calculator/${calc.id}`}>
+          {recentCalculators.length === 0 ? (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center justify-center py-12 text-center bg-gray-50/50 rounded-3xl border border-dashed border-gray-200"
+            >
+              <History className="w-12 h-12 text-gray-300 mb-4" />
+              <p className="text-gray-500 font-medium">No recent calculators</p>
+              <p className="text-sm text-gray-400 mt-1">Calculators you use will appear here</p>
+            </motion.div>
+          ) : (
+            <div className="flex gap-4 overflow-x-auto pb-6 scrollbar-hide -mx-2 px-2 snap-x snap-mandatory">
+              {recentCalculators.map((calc, i) => {
+                const IconComponent = getCategoryIcon(calc.category);
+                return (
                   <motion.div 
-                    whileHover={{ y: -8, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)' }}
-                    className="min-w-[200px] md:min-w-[240px] bg-gray-50/50 p-5 md:p-6 rounded-3xl border border-gray-100 flex items-center gap-3 md:gap-4 cursor-pointer hover:bg-white transition-all shrink-0"
+                    key={calc.id || i}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.4, ease: "easeOut" }}
+                    className="snap-start shrink-0"
                   >
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-blue-600 shrink-0">
-                      <IconComponent className="w-5 h-5 md:w-6 md:h-6" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] md:text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">{calc.category}</div>
-                      <div className="text-sm md:text-base font-bold text-gray-900 leading-tight">{calc.name}</div>
-                    </div>
+                    <Link href={`/calculator/${calc.id}`}>
+                      <div className="w-[220px] h-[90px] bg-white/70 backdrop-blur-md rounded-2xl border border-gray-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(59,130,246,0.15)] hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 p-4 group cursor-pointer">
+                        <div className="w-12 h-12 rounded-xl bg-blue-50/50 group-hover:bg-blue-100/50 flex items-center justify-center text-blue-600 shrink-0 transition-colors">
+                          <IconComponent className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[10px] font-bold text-blue-500 uppercase tracking-wider mb-0.5 truncate">{calc.category}</div>
+                          <div className="text-sm font-bold text-gray-800 leading-tight truncate group-hover:text-blue-700 transition-colors">{calc.name}</div>
+                        </div>
+                      </div>
+                    </Link>
                   </motion.div>
-                </Link>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 
