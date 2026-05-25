@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from './AuthProvider';
 import { useTranslations } from 'next-intl';
+import { GlobalSearch } from '@/components/GlobalSearch';
 
 export function Navbar() {
   const { user, loginWithGoogle, logout } = useAuth();
@@ -36,8 +37,12 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Center - Empty/Spacer */}
-            <div className="hidden md:flex flex-[2]" />
+            {/* Center - Global Search */}
+            <div className="hidden md:flex flex-[2] justify-center px-4 lg:px-8">
+              <div className="w-full max-w-2xl">
+                <GlobalSearch />
+              </div>
+            </div>
 
             {/* Right - Auth */}
             <div className="flex items-center justify-end gap-2 lg:flex-1">
@@ -110,6 +115,10 @@ export function Navbar() {
               </div>
 
               <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-6">
+                {/* Mobile Search */}
+                <div className="block md:hidden">
+                  <GlobalSearch />
+                </div>
                 {/* Mobile Links */}
                 <div className="flex flex-col gap-1">
                   <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 px-2">Menu</div>
