@@ -12,7 +12,7 @@
     "language": "Language"
   },
   "Home": {
-    "heroTitle": "{count, number} calculators and counting.",
+    "heroTitle": "{count, number} calculators",
     "heroSubtitle": "Free AI-powered calculators for finance, math, health, business, ecommerce, engineering, and everyday calculations. Fast and accurate.",
     "lastUsed": "Last used calculators",
     "browseCategory": "Browse by category",

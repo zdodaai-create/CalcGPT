@@ -205,21 +205,22 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 pt-4 pb-16 md:pt-8 md:pb-20 text-center">
-        <div className="mb-4">
+      <section className="max-w-7xl mx-auto px-4 pt-4 pb-16 md:pt-12 md:pb-24 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
           <HeroBadge />
         </div>
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 md:mb-8"
-        >
-          {t('heroTitle', { count: ALL_CALCULATORS.length })}
-        </motion.h1>
-        <p className="text-lg sm:text-xl text-gray-500 mb-10 md:mb-12 max-w-2xl mx-auto font-medium px-2">
-          {t('heroSubtitle')}
-        </p>
-        
+        <div className="w-full md:w-1/2 text-center md:text-left flex flex-col items-center md:items-start">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 md:mb-8"
+          >
+            {t('heroTitle', { count: ALL_CALCULATORS.length })}
+          </motion.h1>
+          <p className="text-lg sm:text-xl text-[#D4AF37] mb-10 md:mb-12 max-w-xl font-medium px-2 md:px-0">
+            {t('heroSubtitle')}
+          </p>
+        </div>
       </section>
 
       {/* Last Used Section */}
