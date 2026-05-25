@@ -19,8 +19,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "CalcGPT – Free AI-Powered Calculators for Everything",
-  description: "CalcGPT offers 1000+ free AI-powered calculators for everything — finance, math, health, engineering, ecommerce, marketing, business, education, science, technology, and everyday calculations. Fast, accurate, responsive, and easy-to-use tools for everyone.",
+  title: "CalcGPT – Free AI Calculators for Everything",
+  description: "Free AI-powered calculators for finance, math, health, business, ecommerce, engineering, and everyday calculations. Fast and accurate.",
   keywords: ["calculator", "math", "finance", "health", "physics", "statistics", "biology", "gpt", "ai"],
   icons: {
     icon: [
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "CalcGPT – Free AI-Powered Calculators for Everything",
-    description: "CalcGPT offers 1000+ free AI-powered calculators for everything — finance, math, health, engineering, ecommerce, marketing, business, education, science, technology, and everyday calculations. Fast, accurate, responsive, and easy-to-use tools for everyone.",
+    title: "CalcGPT – Free AI Calculators for Everything",
+    description: "Free AI-powered calculators for finance, math, health, business, ecommerce, engineering, and everyday calculations. Fast and accurate.",
     url: "https://calcgpt.ai",
     siteName: "CalcGPT AI",
     locale: "en_US",
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CalcGPT – Free AI-Powered Calculators for Everything",
-    description: "CalcGPT offers 1000+ free AI-powered calculators for everything — finance, math, health, engineering, ecommerce, marketing, business, education, science, technology, and everyday calculations. Fast, accurate, responsive, and easy-to-use tools for everyone.",
+    title: "CalcGPT – Free AI Calculators for Everything",
+    description: "Free AI-powered calculators for finance, math, health, business, ecommerce, engineering, and everyday calculations. Fast and accurate.",
   },
 };
 
