@@ -104,12 +104,12 @@ export const HeroBadge = ({ className = "" }: { className?: string }) => {
           </div>
 
           {/* Central Glowing Orb */}
-          <div className="relative z-10 w-[42%] h-[42%] rounded-full bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 badge-center-orb flex flex-col items-center justify-center text-white shadow-[inset_0_0_20px_rgba(255,255,255,0.4)]">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight drop-shadow-md">
+          <div className="relative z-10 w-[42%] h-[42%] rounded-full bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 badge-center-orb flex flex-col items-center justify-center text-white shadow-[inset_0_0_20px_rgba(255,255,255,0.4)] px-2">
+            <div className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight drop-shadow-md">
               {count}+
             </div>
-            <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest opacity-90 mt-1 drop-shadow-md">
-              Calculators
+            <div className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-90 mt-1 drop-shadow-md text-center leading-tight">
+              Free<br className="sm:hidden" /> Calculators
             </div>
           </div>
 
