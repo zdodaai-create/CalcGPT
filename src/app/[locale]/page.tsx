@@ -213,7 +213,7 @@ export default function HomePage() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-10 md:mb-12 max-w-xl px-2 md:px-0 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 leading-tight"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-10 md:mb-12 max-w-lg px-4 md:px-0 text-gray-900 leading-snug"
           >
             {t('heroSubtitle')}
           </motion.p>
