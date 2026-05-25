@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, ArrowLeft, Info, Share2, Bookmark } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { recordCalculatorVisit } from '@/lib/recent-calculators';
+import { saveRecentCalculator } from '@/lib/recent-calculators';
 import 'katex/dist/katex.min.css';
 // @ts-ignore
 import { BlockMath } from 'react-katex';
@@ -21,7 +21,7 @@ export default function CalculatorPage() {
 
   useEffect(() => {
     if (calculator) {
-      recordCalculatorVisit({
+      saveRecentCalculator({
         id: calculator.id,
         name: calculator.name,
         category: calculator.category

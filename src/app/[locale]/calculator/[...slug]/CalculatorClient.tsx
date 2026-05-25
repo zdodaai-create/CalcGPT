@@ -7,7 +7,7 @@ import { AIAssistant } from '@/components/ai/AIAssistant';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { AdContainer } from '@/components/AdContainer';
-import { recordCalculatorVisit } from '@/lib/recent-calculators';
+import { saveRecentCalculator } from '@/lib/recent-calculators';
 import 'katex/dist/katex.min.css';
 import { 
   Sparkles, ArrowLeft, Info, Share2, Bookmark, ChevronRight, 
@@ -23,7 +23,7 @@ export function CalculatorClient({ slug }: { slug: string }) {
 
   useEffect(() => {
     if (calculator) {
-      recordCalculatorVisit({
+      saveRecentCalculator({
         id: calculator.id,
         name: calculator.name,
         category: calculator.category

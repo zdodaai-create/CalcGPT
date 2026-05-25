@@ -8,7 +8,7 @@ export interface RecentCalculator {
 const RECENT_KEY = 'recent_calculators';
 const MAX_RECENT = 10;
 
-export function recordCalculatorVisit(calculator: { id: string; name: string; category: string }) {
+export function saveRecentCalculator(calculator: { id: string; name: string; category: string }) {
   if (typeof window === 'undefined') return;
   try {
     const stored = localStorage.getItem(RECENT_KEY);
@@ -30,8 +30,10 @@ export function recordCalculatorVisit(calculator: { id: string; name: string; ca
     list = list.slice(0, MAX_RECENT);
 
     localStorage.setItem(RECENT_KEY, JSON.stringify(list));
+    console.log('[saveRecentCalculator] Saved to localStorage:', list);
+    window.dispatchEvent(new Event('recent_calculators_updated'));
   } catch (error) {
-    console.error('Failed to save recent calculator visit:', error);
+    console.error('[saveRecentCalculator] Failed to save recent calculator:', error);
   }
 }
 
@@ -40,9 +42,11 @@ export function getRecentCalculators(): RecentCalculator[] {
   try {
     const stored = localStorage.getItem(RECENT_KEY);
     const list = stored ? JSON.parse(stored) : [];
-    return Array.isArray(list) ? list : [];
+    const parsedList = Array.isArray(list) ? list : [];
+    console.log('[getRecentCalculators] Retrieved from localStorage:', parsedList);
+    return parsedList;
   } catch (error) {
-    console.error('Failed to get recent calculators:', error);
+    console.error('[getRecentCalculators] Failed to get recent calculators:', error);
     return [];
   }
 }
