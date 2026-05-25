@@ -19,8 +19,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "CalcGPT | AI-Powered Calculation",
-  description: "CalcGPT provides solutions for a wide range of problems, from finance and business to health. It’s so fast and easy you won’t want to do the math again!",
+  title: "CalcGPT – Free AI-Powered Calculators for Everything",
+  description: "CalcGPT offers 1000+ free AI-powered calculators for everything — finance, math, health, engineering, ecommerce, marketing, business, education, science, technology, and everyday calculations. Fast, accurate, responsive, and easy-to-use tools for everyone.",
   keywords: ["calculator", "math", "finance", "health", "physics", "statistics", "biology", "gpt", "ai"],
   icons: {
     icon: "/favicon.webp",
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     apple: "/favicon.webp",
   },
   openGraph: {
-    title: "CalcGPT",
-    description: "CalcGPT provides solutions for a wide range of problems, from finance and business to health.",
+    title: "CalcGPT – Free AI-Powered Calculators for Everything",
+    description: "CalcGPT offers 1000+ free AI-powered calculators for everything — finance, math, health, engineering, ecommerce, marketing, business, education, science, technology, and everyday calculations. Fast, accurate, responsive, and easy-to-use tools for everyone.",
     url: "https://calcgpt.ai",
     siteName: "CalcGPT AI",
     locale: "en_US",
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CalcGPT",
-    description: "Solutions for every calculation problem.",
+    title: "CalcGPT – Free AI-Powered Calculators for Everything",
+    description: "CalcGPT offers 1000+ free AI-powered calculators for everything — finance, math, health, engineering, ecommerce, marketing, business, education, science, technology, and everyday calculations. Fast, accurate, responsive, and easy-to-use tools for everyone.",
   },
 };
 

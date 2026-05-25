@@ -342,9 +342,6 @@ export default function HomePage() {
       <section className="max-w-[1400px] mx-auto px-4 mb-16 md:mb-20">
         <div className="flex items-center justify-between mb-8 md:mb-10">
           <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900">{t('browseCategory')}</h2>
-          <Link href="/all" className="text-blue-600 font-bold hover:underline flex items-center gap-1 text-sm md:text-lg">
-            {t('viewAll')} <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
-          </Link>
         </div>
         
         <motion.div 
