@@ -116,7 +116,20 @@ export default function HomePage() {
   const [recentCalculators, setRecentCalculators] = useState<any[]>([]);
 
   useEffect(() => {
-    setRecentCalculators(getRecentCalculators());
+    const fetchRecent = () => {
+      const list = getRecentCalculators();
+      setRecentCalculators(prev => JSON.stringify(prev) !== JSON.stringify(list) ? list : prev);
+    };
+    fetchRecent();
+    const interval = setInterval(fetchRecent, 1000);
+    
+    // Also try to listen to storage events
+    window.addEventListener('storage', fetchRecent);
+    
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('storage', fetchRecent);
+    };
   }, []);
 
   const getCategoryIcon = (category: string) => {
