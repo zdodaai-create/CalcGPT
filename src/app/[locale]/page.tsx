@@ -288,7 +288,7 @@ export default function HomePage() {
               </p>
               <Link href="/ai-generator">
                 <button className="bg-blue-600 text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 flex items-center gap-3">
-                  Try AI Forge <ArrowRight className="w-6 h-6" />
+                  Coming Soon <ArrowRight className="w-6 h-6" />
                 </button>
               </Link>
             </div>
