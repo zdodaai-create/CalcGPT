@@ -23,11 +23,7 @@ export const metadata: Metadata = {
   description: "Free AI-powered calculators for finance, math, health, business, ecommerce, engineering, and everyday calculations. Fast and accurate.",
   keywords: ["calculator", "math", "finance", "health", "physics", "statistics", "biology", "gpt", "ai"],
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon.svg', type: 'image/svg+xml' }
-    ],
-    apple: "/icon.svg",
+    icon: "/favicon.ico",
   },
   openGraph: {
     title: "CalcGPT – Free AI Calculators for Everything",
@@ -64,7 +60,10 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head />
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+      </head>
       <body className={`${inter.variable} ${poppins.variable} font-poppins min-h-screen bg-background text-foreground antialiased`}>
         <Script
           id="wpadmngr-anti-adblock"
