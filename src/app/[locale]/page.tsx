@@ -205,15 +205,15 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 pt-4 pb-16 md:pt-12 md:pb-24 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+      <section className="max-w-6xl mx-auto px-4 pt-4 pb-12 md:pt-8 md:pb-16 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+        <div className="w-full md:w-auto flex justify-center md:justify-end">
           <HeroBadge />
         </div>
-        <div className="w-full md:w-1/2 text-center md:text-left flex flex-col items-center md:items-start justify-center h-full">
+        <div className="w-full md:flex-1 text-center md:text-left flex flex-col items-center md:items-start justify-center">
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-10 md:mb-12 max-w-2xl lg:max-w-3xl px-4 md:px-0 text-gray-900 leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl font-medium mb-6 md:mb-8 max-w-lg px-4 md:px-0 text-gray-700 leading-snug"
           >
             {t('heroSubtitle')}
           </motion.p>
