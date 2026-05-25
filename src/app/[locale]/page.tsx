@@ -304,7 +304,7 @@ export default function HomePage() {
               <div className="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mb-8 shadow-lg shadow-blue-500/20">
                 <TrendingUp className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-black mb-6 leading-tight">Join 2M+ monthly users.</h3>
+              <h3 className="text-3xl font-black mb-6 leading-tight">Goal to reach 2M+ users.</h3>
               <p className="text-gray-400 text-lg mb-10 leading-relaxed font-medium">
                 Save your favorite tools, sync history across devices, and get personalized smart recommendations.
               </p>
