@@ -42,7 +42,7 @@ export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "", 
       </div>
 
       <div className={`${innerStyles[type]} w-full flex items-center justify-center relative overflow-hidden group`}>
-        <div data-banner-id="1491788"></div>
+        
       </div>
     </motion.div>
   );
