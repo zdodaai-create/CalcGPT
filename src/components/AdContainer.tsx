@@ -29,7 +29,7 @@ export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "", 
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
@@ -40,7 +40,7 @@ export const AdContainer: React.FC<AdContainerProps> = ({ type, className = "", 
         <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Sponsored</span>
         <div className="h-[1px] w-4 bg-gray-200 dark:bg-gray-800" />
       </div>
-      
+
       <div className={`${innerStyles[type]} w-full flex items-center justify-center relative overflow-hidden group`}>
         <div data-banner-id="1491788"></div>
       </div>
