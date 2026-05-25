@@ -19,7 +19,7 @@ export const HeroBadge = ({ className = "" }: { className?: string }) => {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`relative inline-flex items-center justify-center ${className}`}
     >
-      <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 select-none pointer-events-none">
+      <div className="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] select-none pointer-events-none shrink-0 scale-110">
         
         {/* CSS Animations */}
         <style>

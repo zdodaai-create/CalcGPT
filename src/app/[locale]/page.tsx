@@ -209,17 +209,14 @@ export default function HomePage() {
         <div className="w-full md:w-1/2 flex justify-center md:justify-end">
           <HeroBadge />
         </div>
-        <div className="w-full md:w-1/2 text-center md:text-left flex flex-col items-center md:items-start">
-          <motion.h1 
+        <div className="w-full md:w-1/2 text-center md:text-left flex flex-col items-center md:items-start justify-center h-full">
+          <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 md:mb-8"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-10 md:mb-12 max-w-xl px-2 md:px-0 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 leading-tight"
           >
-            {t('heroTitle', { count: ALL_CALCULATORS.length })}
-          </motion.h1>
-          <p className="text-lg sm:text-xl text-[#D4AF37] mb-10 md:mb-12 max-w-xl font-medium px-2 md:px-0">
             {t('heroSubtitle')}
-          </p>
+          </motion.p>
         </div>
       </section>
 
