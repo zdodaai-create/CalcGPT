@@ -108,7 +108,7 @@ export const HeroBadge = ({ className = "" }: { className?: string }) => {
             <div className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight drop-shadow-md">
               {count}+
             </div>
-            <div className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-90 mt-1 drop-shadow-md text-center leading-tight">
+            <div className="text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] opacity-80 mt-0.5 drop-shadow-sm text-center leading-tight">
               Free<br className="sm:hidden" /> Calculators
             </div>
           </div>
