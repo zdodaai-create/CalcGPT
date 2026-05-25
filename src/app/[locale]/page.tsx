@@ -199,13 +199,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#F8F9FA]">
-      {/* Top Banner Ad */}
-      <div className="bg-white border-b border-gray-100">
-        <AdContainer type="banner" className="py-4" />
-      </div>
-
       {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-4 pt-4 pb-12 md:pt-8 md:pb-16 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+      <section className="max-w-6xl mx-auto px-4 pt-8 pb-12 md:pt-12 md:pb-16 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
         <div className="w-full md:w-auto flex justify-center md:justify-end">
           <HeroBadge />
         </div>
@@ -219,6 +214,11 @@ export default function HomePage() {
           </motion.p>
         </div>
       </section>
+
+      {/* Top Banner Ad (Now moved below Hero) */}
+      <div className="bg-white border-y border-gray-100">
+        <AdContainer type="banner" className="py-4" />
+      </div>
 
       {/* Last Used Section */}
       <section className="max-w-[1400px] mx-auto px-4 mb-16 md:mb-20">
