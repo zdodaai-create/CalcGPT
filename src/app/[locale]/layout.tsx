@@ -23,9 +23,11 @@ export const metadata: Metadata = {
   description: "CalcGPT offers 1000+ free AI-powered calculators for everything — finance, math, health, engineering, ecommerce, marketing, business, education, science, technology, and everyday calculations. Fast, accurate, responsive, and easy-to-use tools for everyone.",
   keywords: ["calculator", "math", "finance", "health", "physics", "statistics", "biology", "gpt", "ai"],
   icons: {
-    icon: "/favicon.webp",
-    shortcut: "/favicon.webp",
-    apple: "/favicon.webp",
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' }
+    ],
+    apple: "/icon.svg",
   },
   openGraph: {
     title: "CalcGPT – Free AI-Powered Calculators for Everything",
