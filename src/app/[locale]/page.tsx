@@ -38,6 +38,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AdContainer } from '@/components/AdContainer';
 import { CategoryCard } from '@/components/CategoryCard';
+import { HeroBadge } from '@/components/ui/HeroBadge';
 import { CategorySkeleton } from '@/components/CategorySkeleton';
 import { useTranslations } from 'next-intl';
 import { useAuth } from '@/components/AuthProvider';
@@ -204,7 +205,10 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 pt-10 pb-16 md:pt-16 md:pb-20 text-center">
+      <section className="max-w-7xl mx-auto px-4 pt-4 pb-16 md:pt-8 md:pb-20 text-center">
+        <div className="mb-4">
+          <HeroBadge />
+        </div>
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

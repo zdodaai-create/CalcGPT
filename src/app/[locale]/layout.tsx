@@ -69,8 +69,8 @@ export default async function RootLayout({
         <Script
           async
           strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9176484091341823"
-          crossOrigin="anonymous"
+          src="https://js.wpadmngr.com/static/adManager.js"
+          data-admpid="442220"
         />
         <ThemeProvider
           attribute="class"
