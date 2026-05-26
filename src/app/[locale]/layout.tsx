@@ -63,6 +63,7 @@ export default async function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" href="/favicon.png" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9176484091341823" crossOrigin="anonymous"></script>
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-poppins min-h-screen bg-background text-foreground antialiased`}>
         <Script
